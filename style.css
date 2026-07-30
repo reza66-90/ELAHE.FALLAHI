@@ -1,2012 +1,4 @@
 /* ==========================================
-   LOVE WEBSITE - COMPLETE RESPONSIVE CSS
-   Desktop + Mobile / Scene 1 تا Scene 6
-   فقط ظاهر؛ بدون تغییر HTML و JavaScript
-========================================== */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html,
-body{
-    width:100%;
-    height:100%;
-}
-
-html{
-    background:#050509;
-}
-
-body{
-    font-family:"Vazirmatn",sans-serif;
-    background:#050509;
-    color:#fff;
-    overflow:hidden;
-    -webkit-tap-highlight-color:transparent;
-}
-
-button{
-    font-family:inherit;
-}
-
-/* ==========================================
-   SCENE SYSTEM
-========================================== */
-
-.scene{
-    display:none;
-    width:100%;
-    height:100vh;
-    min-height:100vh;
-}
-
-.scene:not(.active){
-    display:none !important;
-}
-
-.scene.active{
-    display:flex !important;
-    animation:sceneFade .8s ease;
-}
-
-@keyframes sceneFade{
-    from{opacity:0;}
-    to{opacity:1;}
-}
-
-/* ==========================================
-   SCENE 1
-========================================== */
-
-#scene1{
-    position:relative;
-    justify-content:center;
-    align-items:center;
-    padding:40px 20px;
-    overflow:hidden;
-    isolation:isolate;
-
-    background:
-        radial-gradient(circle at 50% 20%,rgba(255,170,200,.18),transparent 35%),
-        linear-gradient(160deg,#1b1018,#050509);
-
-    animation:
-        movieOpen 1.5s ease,
-        backgroundMove 15s infinite alternate;
-}
-
-#scene1::before{
-    content:"❤️  ✨  ❤️  ✨";
-    position:absolute;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    padding-top:2vh;
-    font-size:clamp(24px,3vw,36px);
-    letter-spacing:clamp(20px,6vw,80px);
-    color:rgba(255,150,190,.42);
-    animation:floatingHearts 8s linear infinite;
-    pointer-events:none;
-    z-index:0;
-}
-
-#scene1::after{
-    content:"";
-    position:absolute;
-    width:450px;
-    height:450px;
-    left:-100px;
-    bottom:-120px;
-    border-radius:50%;
-    background:radial-gradient(circle,rgba(255,120,180,.35),transparent 65%);
-    filter:blur(100px);
-    animation:glowMove 8s infinite alternate;
-    pointer-events:none;
-    z-index:0;
-}
-
-#scene1 .overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.35);
-    z-index:1;
-    pointer-events:none;
-}
-
-#scene1 .content{
-    position:relative;
-    z-index:5;
-    width:min(650px,92%);
-    max-height:94vh;
-    overflow:auto;
-    padding:20px 10px;
-    text-align:center;
-    scrollbar-width:none;
-}
-
-#scene1 .content::-webkit-scrollbar{display:none;}
-
-#scene1 .top-title{
-    display:block;
-    color:#ffb7cd;
-    font-size:clamp(18px,2.2vw,22px);
-    margin-bottom:22px;
-    animation:fadeDown 1.3s ease;
-}
-
-#scene1 h1{
-    font-size:clamp(36px,5vw,52px);
-    line-height:1.3;
-    font-weight:700;
-    margin-bottom:18px;
-    color:#fff;
-    text-shadow:0 0 22px rgba(255,120,170,.55);
-    animation:titleShow 1.6s ease,titleGlow 3s infinite alternate;
-}
-
-#scene1 h2{
-    font-size:clamp(20px,2.6vw,28px);
-    line-height:1.6;
-    font-weight:400;
-    color:#ffd9e5;
-    margin-bottom:24px;
-    animation:fadeUp 1.8s ease;
-}
-
-#scene1 p{
-    font-size:clamp(15px,2vw,19px);
-    line-height:2.05;
-    color:#f1f1f1;
-    margin-bottom:32px;
-    animation:fadeUp 2s ease;
-}
-
-#startBtn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    min-height:54px;
-    padding:14px 36px;
-    border:none;
-    border-radius:50px;
-    background:linear-gradient(135deg,#ff6f9c,#ff3f7a);
-    color:#fff;
-    font-size:clamp(16px,2vw,19px);
-    cursor:pointer;
-    box-shadow:0 0 25px rgba(255,80,130,.6);
-    animation:buttonGlow 2s infinite,buttonFloat 3s infinite,buttonPulse 2s infinite;
-    transition:.3s;
-}
-
-#startBtn:hover{transform:scale(1.08);}
-#startBtn:active{transform:scale(.98);}
-
-#heartContainer{
-    position:absolute;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
-    z-index:4;
-}
-
-#scene1 .heart,
-.heart-rain{
-    position:absolute;
-    top:-60px;
-    pointer-events:none;
-    filter:drop-shadow(0 0 10px rgba(255,100,160,.8));
-    animation:heartFall linear forwards;
-}
-
-.heart-rain{
-    z-index:6;
-}
-
-@keyframes heartFall{
-    0%{transform:translateY(-50px) rotate(0deg);opacity:0;}
-    20%{opacity:1;}
-    100%{transform:translateY(110vh) rotate(360deg);opacity:0;}
-}
-
-@keyframes glowMove{
-    from{transform:translate(0,0);}
-    to{transform:translate(50px,30px);}
-}
-
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(40px);}
-    to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes fadeDown{
-    from{opacity:0;transform:translateY(-30px);}
-    to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes titleShow{
-    from{opacity:0;transform:translateY(50px) scale(.8);}
-    to{opacity:1;transform:translateY(0) scale(1);}
-}
-
-@keyframes titleGlow{
-    from{text-shadow:0 0 15px #ff9fbd;}
-    to{text-shadow:0 0 40px #ff4f8b;}
-}
-
-@keyframes buttonGlow{
-    0%,100%{box-shadow:0 0 15px rgba(255,80,130,.4);}
-    50%{box-shadow:0 0 40px rgba(255,80,130,.9);}
-}
-
-@keyframes buttonFloat{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-7px);}
-}
-
-@keyframes buttonPulse{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.04);}
-}
-
-@keyframes floatingHearts{
-    from{transform:translateY(100vh);opacity:0;}
-    20%{opacity:1;}
-    to{transform:translateY(-120vh);opacity:0;}
-}
-
-@keyframes backgroundMove{
-    from{background-position:0 0;}
-    to{background-position:100px 50px;}
-}
-
-@keyframes movieOpen{
-    from{opacity:0;transform:scale(1.08);filter:blur(10px);}
-    to{opacity:1;transform:scale(1);filter:blur(0);}
-}
-
-/* ==========================================
-   SHARED PHOTO / CAPTION
-========================================== */
-
-.photo{
-    object-fit:cover;
-    object-position:center;
-}
-
-.scene-number{
-    display:block;
-}
-
-/* ==========================================
-   SCENE 2
-========================================== */
-
-#scene2{
-    position:relative;
-    justify-content:center;
-    align-items:center;
-    gap:clamp(22px,4vw,50px);
-    padding:40px clamp(20px,5vw,70px);
-    overflow:hidden;
-
-    background:
-        radial-gradient(circle at center,rgba(255,120,170,.15),transparent 40%),
-        linear-gradient(135deg,#09070c,#1b0d18);
-}
-
-#scene2 .photoBox{
-    position:relative;
-    flex:0 1 520px;
-    width:min(46vw,520px);
-    height:min(76vh,680px);
-    overflow:hidden;
-    border-radius:32px;
-    box-shadow:0 0 50px rgba(255,100,160,.35);
-}
-
-#scene2 .photo{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    animation:photoZoom 12s ease infinite alternate;
-}
-
-#scene2 .photoBox::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to top,rgba(0,0,0,.45),transparent 55%);
-    pointer-events:none;
-}
-
-#scene2 .caption{
-    position:relative;
-    z-index:2;
-    flex:0 1 600px;
-    width:min(48vw,600px);
-    max-height:min(76vh,680px);
-    overflow:auto;
-    padding:32px clamp(22px,3vw,40px);
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(14px);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:32px;
-    text-align:center;
-    box-shadow:0 0 40px rgba(255,120,170,.2);
-    animation:captionShow 1.6s ease;
-    scrollbar-width:none;
-}
-
-#scene2 .caption::-webkit-scrollbar{display:none;}
-
-#scene2 .scene-number{
-    margin-bottom:18px;
-    color:#ffb6d0;
-    font-size:19px;
-}
-
-#scene2 h2{
-    font-size:clamp(26px,3vw,36px);
-    line-height:1.45;
-    color:#fff;
-    margin-bottom:22px;
-    text-shadow:0 0 20px #ff8fb5;
-}
-
-#scene2 p{
-    font-size:clamp(15px,1.7vw,18px);
-    line-height:1.95;
-    color:#fff;
-    text-shadow:0 2px 10px rgba(0,0,0,.8);
-}
-
-#nextBtn2{
-    margin-top:24px;
-    min-height:50px;
-    padding:12px 30px;
-    border:none;
-    border-radius:50px;
-    background:linear-gradient(135deg,#ff6f9d,#ff3977);
-    color:#fff;
-    font-size:16px;
-    cursor:pointer;
-    box-shadow:0 0 25px rgba(255,80,140,.5);
-    transition:.3s;
-}
-
-#nextBtn2:hover{transform:scale(1.06);}
-#nextBtn2:active{transform:scale(.98);}
-
-#scene2::before{
-    content:"❤️  💕  💗";
-    position:absolute;
-    top:-50px;
-    left:20%;
-    font-size:32px;
-    animation:fallHearts 8s linear infinite;
-    pointer-events:none;
-}
-
-#scene2::after{
-    content:"❄  ❄  ❄  ❄  ❄";
-    position:absolute;
-    top:-40px;
-    right:20%;
-    font-size:28px;
-    color:#fff;
-    animation:snow 10s linear infinite;
-    pointer-events:none;
-}
-
-@keyframes photoZoom{
-    from{transform:scale(1);}
-    to{transform:scale(1.07);}
-}
-
-@keyframes captionShow{
-    from{opacity:0;transform:translateY(40px);}
-    to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes fallHearts{
-    from{transform:translateY(-100px);opacity:0;}
-    20%{opacity:1;}
-    to{transform:translateY(100vh);opacity:0;}
-}
-
-@keyframes snow{
-    from{transform:translateY(-50px);}
-    to{transform:translateY(100vh);}
-}
-
-/* ==========================================
-   SCENE 3
-========================================== */
-
-#scene3{
-    position:relative;
-    justify-content:center;
-    align-items:center;
-    gap:clamp(25px,5vw,60px);
-    padding:40px 60px;
-    overflow:hidden;
-    isolation:isolate;
-
-    background:
-        radial-gradient(circle at center,rgba(255,120,170,.12),transparent 45%),
-        linear-gradient(135deg,#08080d,#120b12);
-}
-
-#scene3 .overlay{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to right,rgba(0,0,0,.45),rgba(0,0,0,.2));
-    z-index:0;
-    pointer-events:none;
-}
-
-#scene3 .photo{
-    position:relative;
-    flex:0 1 420px;
-    width:min(40vw,420px);
-    height:min(76vh,620px);
-    border-radius:30px;
-    border:4px solid rgba(255,255,255,.12);
-    box-shadow:0 0 25px rgba(255,120,170,.45),0 0 60px rgba(255,120,170,.25);
-    animation:photoZoom 12s ease infinite alternate;
-    z-index:2;
-}
-
-#scene3 .caption{
-    position:relative;
-    flex:0 1 500px;
-    width:min(43vw,500px);
-    max-height:min(76vh,620px);
-    overflow:auto;
-    padding:35px clamp(22px,3vw,40px);
-    background:rgba(20,20,25,.72);
-    backdrop-filter:blur(15px);
-    border-radius:30px;
-    box-shadow:0 0 35px rgba(255,120,170,.22);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    text-align:center;
-    color:#fff;
-    z-index:3;
-    animation:captionShow 1.5s ease;
-    scrollbar-width:none;
-}
-
-#scene3 .caption::-webkit-scrollbar{display:none;}
-
-#scene3 .scene-number{
-    color:#ffb5d1;
-    font-size:18px;
-    margin-bottom:15px;
-}
-
-#scene3 h2{
-    font-size:clamp(25px,3vw,34px);
-    line-height:1.45;
-    color:#ffe0ea;
-    margin-bottom:18px;
-    text-shadow:0 0 15px rgba(255,120,170,.5);
-}
-
-#scene3 p{
-    font-size:clamp(15px,1.7vw,18px);
-    line-height:1.9;
-    color:#fff;
-    margin-bottom:26px;
-}
-
-#scene3 .nextBtn{
-    width:min(240px,90%);
-    margin:0 auto;
-    padding:14px 18px;
-    border:none;
-    border-radius:50px;
-    background:linear-gradient(135deg,#ff5d95,#ff2f74);
-    color:#fff;
-    font-size:17px;
-    cursor:pointer;
-    box-shadow:0 0 25px rgba(255,90,150,.5);
-    transition:.3s;
-    animation:buttonPulse 2s infinite;
-}
-
-#scene3 .nextBtn:hover{transform:scale(1.06);}
-
-.petal{
-    position:absolute;
-    top:-60px;
-    font-size:22px;
-    opacity:.85;
-    z-index:2;
-    animation:fall 10s linear infinite;
-    pointer-events:none;
-}
-
-@keyframes fall{
-    from{transform:translateY(-50px) rotate(0deg);}
-    to{transform:translateY(120vh) rotate(360deg);}
-}
-
-#scene3 .heart,
-#scene4 .heart,
-#scene5 .heart{
-    position:absolute;
-    bottom:-40px;
-    font-size:22px;
-    z-index:2;
-    pointer-events:none;
-}
-
-#scene3 .heart{animation:heartUp 8s linear infinite;}
-
-@keyframes heartUp{
-    from{transform:translateY(0) scale(.8);opacity:0;}
-    30%{opacity:1;}
-    to{transform:translateY(-120vh) scale(1.4);opacity:0;}
-}
-
-.spark{
-    position:absolute;
-    width:5px;
-    height:5px;
-    border-radius:50%;
-    background:#fff;
-    box-shadow:0 0 10px #fff,0 0 20px #ff8db8;
-    animation:twinkle 2s infinite alternate;
-    z-index:2;
-    pointer-events:none;
-}
-
-@keyframes twinkle{
-    from{opacity:.2;transform:scale(.7);}
-    to{opacity:1;transform:scale(1.5);}
-}
-
-/* ==========================================
-   SCENE 4
-========================================== */
-
-#scene4{
-    position:relative;
-    justify-content:center;
-    align-items:center;
-    gap:clamp(25px,4vw,55px);
-    padding:40px 60px;
-    overflow:hidden;
-    isolation:isolate;
-
-    background:
-        radial-gradient(circle at center,rgba(255,120,170,.12),transparent 45%),
-        linear-gradient(135deg,#09070d,#170d16);
-}
-
-#scene4::before{
-    content:"";
-    position:absolute;
-    width:520px;
-    height:520px;
-    border-radius:50%;
-    background:rgba(255,110,170,.20);
-    filter:blur(130px);
-    left:-140px;
-    top:-140px;
-    animation:glow4 8s infinite alternate;
-    pointer-events:none;
-}
-
-#scene4 .overlay{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to right,rgba(0,0,0,.22),rgba(0,0,0,.10));
-    pointer-events:none;
-    z-index:0;
-}
-
-#scene4 .photoBox{
-    position:relative;
-    flex:0 1 430px;
-    width:min(40vw,430px);
-    height:min(76vh,620px);
-    overflow:hidden;
-    border-radius:30px;
-    border:4px solid rgba(255,255,255,.15);
-    box-shadow:0 0 30px rgba(255,120,170,.6),0 0 80px rgba(255,120,170,.35);
-    z-index:2;
-}
-
-#scene4 .photo{
-    width:100%;
-    height:100%;
-    animation:photoZoom4 15s ease-in-out infinite alternate;
-}
-
-#scene4 .photoBox::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to top,rgba(0,0,0,.4),transparent 55%);
-    pointer-events:none;
-}
-
-#scene4 .caption{
-    position:relative;
-    flex:0 1 500px;
-    width:min(44vw,500px);
-    max-height:min(76vh,620px);
-    overflow:auto;
-    padding:32px clamp(22px,3vw,38px);
-    background:rgba(20,20,25,.74);
-    backdrop-filter:blur(14px);
-    border-radius:30px;
-    box-shadow:0 0 35px rgba(255,120,170,.25);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    text-align:center;
-    color:#fff;
-    z-index:3;
-    animation:scene4Box 1.5s ease;
-    scrollbar-width:none;
-}
-
-#scene4 .caption::-webkit-scrollbar{display:none;}
-
-#scene4 .caption > .overlay{
-    position:absolute;
-    inset:0;
-    border-radius:inherit;
-    background:rgba(0,0,0,.08);
-    z-index:0;
-}
-
-#scene4 .caption > *:not(.overlay){
-    position:relative;
-    z-index:1;
-}
-
-#scene4 .scene-number{
-    font-size:18px;
-    color:#ff9fc7;
-    margin-bottom:12px;
-}
-
-#scene4 h2{
-    font-size:clamp(24px,2.8vw,32px);
-    line-height:1.45;
-    color:#ffd6e7;
-    margin-bottom:15px;
-}
-
-#scene4 p{
-    font-size:clamp(15px,1.65vw,18px);
-    line-height:1.7;
-    margin:0 0 20px;
-    color:#fff;
-}
-
-#scene4 .nextBtn{
-    width:min(230px,90%);
-    margin:auto;
-    padding:14px 18px;
-    border:none;
-    border-radius:50px;
-    background:linear-gradient(135deg,#ff5c94,#ff2f74);
-    color:#fff;
-    font-size:17px;
-    cursor:pointer;
-    box-shadow:0 0 25px rgba(255,90,150,.5);
-    transition:.3s;
-}
-
-#scene4 .nextBtn:hover{transform:scale(1.06);}
-
-#scene4 .heart{animation:heartUp4 8s linear infinite;opacity:.8;}
-
-@keyframes heartUp4{
-    from{transform:translateY(0) scale(.7);opacity:0;}
-    25%{opacity:1;}
-    to{transform:translateY(-110vh) scale(1.4);opacity:0;}
-}
-
-#scene4 .spark{animation:twinkle4 2s infinite;}
-
-@keyframes twinkle4{
-    0%,100%{opacity:.2;transform:scale(.5);}
-    50%{opacity:1;transform:scale(1.8);}
-}
-
-#scene4 .particle{
-    position:absolute;
-    width:5px;
-    height:5px;
-    border-radius:50%;
-    background:#fff;
-    box-shadow:0 0 8px #fff,0 0 15px rgba(255,180,220,.8);
-    opacity:.7;
-    pointer-events:none;
-    z-index:2;
-    animation:particleFloat 12s linear infinite;
-}
-
-@keyframes particleFloat{
-    0%{transform:translateY(100px);opacity:0;}
-    20%{opacity:.8;}
-    100%{transform:translateY(-120vh);opacity:0;}
-}
-
-@keyframes scene4Box{
-    from{opacity:0;transform:translateY(50px) scale(.94);filter:blur(7px);}
-    to{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
-}
-
-@keyframes photoZoom4{
-    from{transform:scale(1);}
-    to{transform:scale(1.07);}
-}
-
-@keyframes glow4{
-    from{transform:translate(0,0);}
-    to{transform:translate(60px,40px);}
-}
-
-/* ==========================================
-   SCENE 5
-========================================== */
-
-#scene5{
-    position:relative;
-    justify-content:center;
-    align-items:center;
-    gap:clamp(25px,4vw,55px);
-    padding:40px clamp(20px,5vw,70px);
-    overflow:hidden;
-    isolation:isolate;
-    background:#08070b;
-}
-
-#scene5::before{
-    content:"";
-    position:absolute;
-    width:500px;
-    height:500px;
-    border-radius:50%;
-    background:rgba(255,120,170,.18);
-    filter:blur(130px);
-    top:-150px;
-    left:-150px;
-    animation:glow5 8s infinite alternate;
-    pointer-events:none;
-    z-index:0;
-}
-
-#scene5 > .photo{
-    position:relative;
-    flex:0 1 500px;
-    width:min(46vw,500px);
-    height:min(78vh,650px);
-    border-radius:30px;
-    border:3px solid rgba(255,255,255,.15);
-    box-shadow:0 0 30px rgba(255,120,170,.45),0 0 70px rgba(255,120,170,.25);
-    filter:contrast(1.08) brightness(.88) saturate(1.12);
-    z-index:1;
-    animation:photoEnter5 1.5s ease .2s both,photoZoom 12s ease infinite alternate;
-}
-
-#scene5 > .overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.10);
-    pointer-events:none;
-    z-index:0;
-}
-
-#scene5 .caption{
-    position:relative;
-    flex:0 1 520px;
-    width:min(45vw,520px);
-    max-height:min(78vh,650px);
-    overflow:auto;
-    padding:30px clamp(22px,3vw,40px);
-    background:rgba(20,18,30,.84);
-    backdrop-filter:blur(16px);
-    border-radius:30px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    text-align:center;
-    color:#fff;
-    box-shadow:0 0 35px rgba(255,120,170,.25);
-    z-index:3;
-    animation:captionDrop5 1.4s ease both;
-    scrollbar-width:none;
-}
-
-#scene5 .caption::-webkit-scrollbar{display:none;}
-
-#scene5 .caption > .overlay{
-    position:absolute;
-    inset:0;
-    border-radius:inherit;
-    background:rgba(0,0,0,.03);
-    pointer-events:none;
-    z-index:0;
-}
-
-#scene5 .caption > *:not(.overlay){
-    position:relative;
-    z-index:2;
-}
-
-#scene5 .scene-number{
-    margin-bottom:16px;
-    color:#ffb6d2;
-    font-size:20px;
-}
-
-#scene5 h2{
-    font-size:clamp(24px,2.8vw,32px);
-    line-height:1.45;
-    margin-bottom:14px;
-}
-
-#scene5 p{
-    font-size:clamp(14px,1.5vw,17px);
-    line-height:1.65;
-    margin-bottom:16px;
-    color:#fff;
-}
-
-#scene5 .buttons{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:16px;
-    flex-wrap:wrap;
-    margin-top:4px;
-}
-
-#dateBtn,
-#noBtn{
-    min-height:48px;
-    border-radius:45px;
-    cursor:pointer;
-    font-size:14px;
-    transition:.35s;
-}
-
-#dateBtn{
-    width:min(230px,100%);
-    padding:12px 18px;
-    border:none;
-    font-weight:bold;
-    color:#fff;
-    background:linear-gradient(135deg,#ff77aa,#ff2d74);
-    box-shadow:0 0 20px #ff5f95,0 0 50px rgba(255,90,150,.6);
-    animation:buttonPulse 2s infinite;
-}
-
-#noBtn{
-    width:min(200px,100%);
-    padding:12px 18px;
-    border:2px solid rgba(255,255,255,.25);
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(10px);
-    color:#fff;
-}
-
-#dateBtn:hover{transform:scale(1.06);}
-#noBtn:hover{background:rgba(255,255,255,.18);transform:scale(1.04);}
-
-#scene5 .heart{animation:heartUp5 8s linear infinite;}
-
-@keyframes heartUp5{
-    from{transform:translateY(0) scale(.8);opacity:0;}
-    30%{opacity:1;}
-    to{transform:translateY(-110vh) scale(1.4);opacity:0;}
-}
-
-#scene5 .petal{
-    animation:petalFall5 10s linear infinite;
-}
-
-@keyframes petalFall5{
-    from{transform:translateY(-50px) rotate(0deg);}
-    to{transform:translateY(120vh) rotate(360deg);}
-}
-
-#scene5 .spark{
-    animation:twinkle5 2s infinite;
-}
-
-@keyframes twinkle5{
-    0%,100%{opacity:.3;transform:scale(.5);}
-    50%{opacity:1;transform:scale(1.8);}
-}
-
-@keyframes glow5{
-    from{transform:translate(0,0);}
-    to{transform:translate(60px,40px);}
-}
-
-@keyframes photoEnter5{
-    from{opacity:0;transform:translateX(-60px) scale(.92);}
-    to{opacity:1;transform:translateX(0) scale(1);}
-}
-
-@keyframes captionDrop5{
-    0%{opacity:0;transform:translateY(-100px) scale(.95);}
-    70%{transform:translateY(10px) scale(1.01);}
-    100%{opacity:1;transform:translateY(0) scale(1);}
-}
-
-/* ==========================================
-   SCENE 6
-========================================== */
-
-#scene6{
-    position:relative;
-    justify-content:center;
-    align-items:center;
-    padding:30px 20px;
-    overflow:hidden;
-    isolation:isolate;
-
-    background:
-        radial-gradient(circle at 50% 20%,rgba(255,130,180,.22),transparent 38%),
-        radial-gradient(circle at 15% 85%,rgba(255,80,150,.12),transparent 30%),
-        linear-gradient(145deg,#08070d,#1a0b16,#09070d);
-}
-
-#scene6::before{
-    content:"";
-    position:absolute;
-    width:450px;
-    height:450px;
-    border-radius:50%;
-    left:-130px;
-    bottom:-150px;
-    background:rgba(255,90,155,.16);
-    filter:blur(115px);
-    animation:finalGlow 9s ease-in-out infinite alternate;
-    pointer-events:none;
-}
-
-#scene6::after{
-    content:"❤️  ✨  💕  ✨  ❤️";
-    position:absolute;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    padding-top:5vh;
-    font-size:28px;
-    letter-spacing:25px;
-    color:rgba(255,170,205,.28);
-    animation:finalHearts 9s linear infinite;
-    pointer-events:none;
-}
-
-#scene6 .finalBox{
-    position:relative;
-    z-index:3;
-    width:min(760px,92%);
-    max-height:88vh;
-    overflow:auto;
-    padding:48px clamp(24px,5vw,58px);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-
-    background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.04));
-    border:1px solid rgba(255,190,215,.18);
-    border-radius:38px;
-    backdrop-filter:blur(18px);
-    box-shadow:0 0 35px rgba(255,100,160,.20),0 0 100px rgba(255,80,150,.12),inset 0 1px 0 rgba(255,255,255,.10);
-    animation:finalBoxShow 1.7s ease both;
-    scrollbar-width:none;
-}
-
-#scene6 .finalBox::-webkit-scrollbar{display:none;}
-
-#scene6 .scene-number{
-    margin-bottom:18px;
-    color:#ffb7d0;
-    font-size:20px;
-    text-shadow:0 0 15px rgba(255,130,175,.55);
-}
-
-#scene6 h1{
-    margin:0 0 22px;
-    font-size:clamp(34px,5vw,58px);
-    line-height:1.35;
-    color:#fff;
-    text-shadow:0 0 20px rgba(255,170,205,.75),0 0 40px rgba(255,70,140,.45);
-    animation:finalTitleGlow 3s ease-in-out infinite alternate;
-}
-
-#scene6 p{
-    max-width:600px;
-    margin:0 0 22px;
-    font-size:clamp(16px,2vw,21px);
-    line-height:2.05;
-    color:#f8edf2;
-}
-
-#scene6 h2{
-    margin:4px 0 18px;
-    font-size:clamp(28px,4vw,42px);
-    color:#ffd0df;
-    text-shadow:0 0 18px rgba(255,110,165,.85),0 0 45px rgba(255,80,150,.35);
-    animation:signaturePulse 2.6s ease-in-out infinite;
-}
-
-@keyframes finalGlow{
-    from{transform:translate(0,0) scale(1);opacity:.65;}
-    to{transform:translate(80px,-40px) scale(1.15);opacity:1;}
-}
-
-@keyframes finalHearts{
-    from{transform:translateY(105vh);opacity:0;}
-    20%{opacity:1;}
-    to{transform:translateY(-120vh);opacity:0;}
-}
-
-@keyframes finalBoxShow{
-    from{opacity:0;transform:translateY(55px) scale(.90);filter:blur(10px);}
-    to{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
-}
-
-@keyframes finalTitleGlow{
-    from{text-shadow:0 0 15px rgba(255,170,205,.55),0 0 30px rgba(255,70,140,.20);}
-    to{text-shadow:0 0 25px rgba(255,190,220,.95),0 0 60px rgba(255,70,140,.50);}
-}
-
-@keyframes signaturePulse{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.04);}
-}
-
-/* ==========================================
-   TABLET / SMALL LAPTOP
-========================================== */
-
-@media (max-width:1100px) and (min-width:901px){
-
-    #scene2,
-    #scene3,
-    #scene4,
-    #scene5{
-        padding-left:30px;
-        padding-right:30px;
-        gap:25px;
-    }
-
-    #scene2 .photoBox,
-    #scene3 .photo,
-    #scene4 .photoBox{
-        width:40vw;
-    }
-
-    #scene2 .caption,
-    #scene3 .caption,
-    #scene4 .caption{
-        width:45vw;
-    }
-
-    #scene5 > .photo{
-        width:42vw;
-    }
-
-    #scene5 .caption{
-        width:44vw;
-    }
-}
-
-/* ==========================================
-   MOBILE
-========================================== */
-
-@media (max-width:900px){
-
-    body{
-        overflow:hidden;
-    }
-
-    .scene{
-        height:100dvh;
-        min-height:100dvh;
-    }
-
-    /* ---------- Scene 1 ---------- */
-
-    #scene1{
-        min-height:100dvh;
-        padding:18px 12px;
-    }
-
-    #scene1 .content{
-        width:100%;
-        max-width:560px;
-        max-height:92dvh;
-        padding:10px 8px 20px;
-    }
-
-    #scene1 .top-title{
-        margin-bottom:14px;
-        font-size:17px;
-    }
-
-    #scene1 h1{
-        font-size:clamp(32px,9vw,44px);
-        margin-bottom:12px;
-    }
-
-    #scene1 h2{
-        font-size:clamp(18px,5.2vw,24px);
-        margin-bottom:16px;
-    }
-
-    #scene1 p{
-        font-size:clamp(14px,4vw,17px);
-        line-height:1.95;
-        margin-bottom:24px;
-    }
-
-    #startBtn{
-        width:min(92%,360px);
-        min-height:52px;
-        padding:13px 20px;
-        font-size:16px;
-    }
-
-    /* ---------- Scene 2 ---------- */
-
-    #scene2{
-        flex-direction:column;
-        justify-content:flex-start;
-        align-items:center;
-        gap:16px;
-        padding:16px 12px calc(16px + env(safe-area-inset-bottom));
-        overflow-y:auto;
-        -webkit-overflow-scrolling:touch;
-    }
-
-    #scene2 .photoBox{
-        flex:none;
-        width:min(88vw,430px);
-        height:min(40dvh,330px);
-        min-height:220px;
-        border-radius:24px;
-    }
-
-    #scene2 .caption{
-        flex:none;
-        width:min(94vw,560px);
-        max-height:none;
-        overflow:visible;
-        padding:22px 16px 24px;
-        border-radius:24px;
-    }
-
-    #scene2 .scene-number{
-        font-size:16px;
-        margin-bottom:12px;
-    }
-
-    #scene2 h2{
-        font-size:clamp(22px,6.8vw,30px);
-        margin-bottom:14px;
-    }
-
-    #scene2 p{
-        font-size:14px;
-        line-height:1.9;
-    }
-
-    #nextBtn2{
-        width:min(92%,330px);
-        min-height:48px;
-        padding:12px 16px;
-        font-size:15px;
-    }
-
-    /* ---------- Scene 3 ---------- */
-
-    #scene3{
-        flex-direction:column;
-        justify-content:flex-start;
-        gap:16px;
-        padding:16px 12px calc(16px + env(safe-area-inset-bottom));
-        overflow-y:auto;
-        -webkit-overflow-scrolling:touch;
-    }
-
-    #scene3 .photo{
-        flex:none;
-        width:min(86vw,400px);
-        height:min(42dvh,330px);
-        min-height:220px;
-        border-radius:24px;
-    }
-
-    #scene3 .caption{
-        flex:none;
-        width:min(94vw,560px);
-        max-height:none;
-        overflow:visible;
-        padding:24px 17px 26px;
-        border-radius:24px;
-    }
-
-    #scene3 .scene-number{
-        font-size:16px;
-        margin-bottom:10px;
-    }
-
-    #scene3 h2{
-        font-size:clamp(22px,6.5vw,30px);
-        margin-bottom:14px;
-    }
-
-    #scene3 p{
-        font-size:14px;
-        line-height:1.9;
-        margin-bottom:20px;
-    }
-
-    #scene3 .nextBtn{
-        width:min(92%,300px);
-        font-size:15px;
-    }
-
-    /* ---------- Scene 4 ---------- */
-
-    #scene4{
-        flex-direction:column;
-        justify-content:flex-start;
-        gap:16px;
-        padding:16px 12px calc(16px + env(safe-area-inset-bottom));
-        overflow-y:auto;
-        -webkit-overflow-scrolling:touch;
-    }
-
-    #scene4 .photoBox{
-        flex:none;
-        width:min(86vw,400px);
-        height:min(40dvh,330px);
-        min-height:220px;
-        border-radius:24px;
-    }
-
-    #scene4 .caption{
-        flex:none;
-        width:min(94vw,560px);
-        max-height:none;
-        overflow:visible;
-        padding:22px 16px 26px;
-        border-radius:24px;
-    }
-
-    #scene4 .scene-number{
-        font-size:16px;
-        margin-bottom:10px;
-    }
-
-    #scene4 h2{
-        font-size:clamp(21px,6.3vw,29px);
-        margin-bottom:12px;
-    }
-
-    #scene4 p{
-        font-size:14px;
-        line-height:1.72;
-        margin-bottom:18px;
-    }
-
-    #scene4 .nextBtn{
-        width:min(92%,300px);
-        font-size:15px;
-    }
-
-    /* ---------- Scene 5 ---------- */
-
-    #scene5{
-        flex-direction:column;
-        justify-content:flex-start;
-        gap:16px;
-        padding:16px 12px calc(16px + env(safe-area-inset-bottom));
-        overflow-y:auto;
-        -webkit-overflow-scrolling:touch;
-    }
-
-    #scene5 > .photo{
-        flex:none;
-        width:min(86vw,400px);
-        height:min(38dvh,310px);
-        min-height:210px;
-        border-radius:24px;
-    }
-
-    #scene5 .caption{
-        flex:none;
-        width:min(94vw,560px);
-
-        /* فقط متن صفحه 5 داخل باکس اسکرول می‌شود */
-        height:min(72dvh,620px);
-        max-height:min(72dvh,620px);
-        overflow-y:auto;
-        overflow-x:hidden;
-
-        padding:24px 16px 28px;
-        border-radius:24px;
-
-        -webkit-overflow-scrolling:touch;
-        overscroll-behavior:contain;
-        scrollbar-width:thin;
-    }
-
-    #scene5 .caption::-webkit-scrollbar{
-        width:5px;
-    }
-
-    #scene5 .caption::-webkit-scrollbar-thumb{
-        border-radius:10px;
-        background:rgba(255,160,195,.45);
-    }
-
-    #scene5 .caption::-webkit-scrollbar-track{
-        background:transparent;
-    }
-
-    #scene5 .scene-number{
-        font-size:16px;
-        margin-bottom:10px;
-    }
-
-    #scene5 h2{
-        font-size:clamp(21px,6.3vw,29px);
-        margin-bottom:12px;
-    }
-
-    #scene5 p{
-        font-size:14px;
-        line-height:1.7;
-        margin-bottom:16px;
-    }
-
-    #scene5 .buttons{
-        flex-direction:column;
-        gap:10px;
-    }
-
-    #dateBtn,
-    #noBtn{
-        width:min(92%,310px);
-        min-height:48px;
-        font-size:14px;
-    }
-
-    /* ---------- Scene 6 ---------- */
-
-    #scene6{
-        min-height:100dvh;
-        height:100dvh;
-        align-items:center;
-        padding:18px 12px calc(18px + env(safe-area-inset-bottom));
-        overflow-y:auto;
-        -webkit-overflow-scrolling:touch;
-    }
-
-    #scene6::after{
-        padding-top:3vh;
-        font-size:21px;
-        letter-spacing:10px;
-    }
-
-    #scene6 .finalBox{
-        width:min(94vw,560px);
-        max-height:none;
-        overflow:visible;
-        padding:30px 18px 28px;
-        border-radius:26px;
-    }
-
-    #scene6 .scene-number{
-        font-size:16px;
-        margin-bottom:12px;
-    }
-
-    #scene6 h1{
-        font-size:clamp(27px,8vw,40px);
-        line-height:1.45;
-        margin-bottom:16px;
-    }
-
-    #scene6 p{
-        font-size:14px;
-        line-height:1.95;
-        margin-bottom:16px;
-    }
-
-    #scene6 h2{
-        font-size:clamp(24px,7vw,34px);
-        line-height:1.5;
-        margin-bottom:12px;
-    }
-}
-
-/* ==========================================
-   VERY SMALL PHONES
-========================================== */
-
-@media (max-width:380px){
-
-    #scene1 h1{font-size:30px;}
-    #scene1 h2{font-size:18px;}
-    #scene1 p{font-size:13px;}
-
-    #scene2 .photoBox,
-    #scene3 .photo,
-    #scene4 .photoBox,
-    #scene5 > .photo{
-        width:90vw;
-        min-height:190px;
-        height:31dvh;
-    }
-
-    #scene2 .caption,
-    #scene3 .caption,
-    #scene4 .caption,
-    #scene5 .caption{
-        width:95vw;
-        padding-left:13px;
-        padding-right:13px;
-    }
-
-    #scene2 p,
-    #scene3 p,
-    #scene4 p,
-    #scene5 p{
-        font-size:13px;
-    }
-
-    #scene6 .finalBox{
-        width:95vw;
-        padding:26px 14px 24px;
-    }
-
-    #scene6 h1{font-size:27px;}
-    #scene6 p{font-size:13px;}
-    #scene6 h2{font-size:23px;}
-}
-
-/* ==========================================
-   HEIGHT-LIMITED PHONES
-========================================== */
-
-@media (max-width:900px) and (max-height:700px){
-
-    #scene1 .content{max-height:94dvh;}
-
-    #scene2 .photoBox,
-    #scene3 .photo,
-    #scene4 .photoBox,
-    #scene5 > .photo{
-        height:27dvh;
-        min-height:175px;
-    }
-
-    #scene2 .caption,
-    #scene3 .caption,
-    #scene4 .caption,
-    #scene5 .caption{
-        padding-top:16px;
-        padding-bottom:18px;
-    }
-
-    #scene2 p,
-    #scene3 p,
-    #scene4 p,
-    #scene5 p{
-        line-height:1.55;
-    }
-}
-
-/* ==========================================
-   FINAL OVERRIDE - SCENE 5 MOBILE
-   بدون اسکرول و مناسب صفحه موبایل
-========================================== */
-@media (max-width: 900px){
-    #scene5{
-        width:100%;
-        height:100dvh !important;
-        min-height:100dvh !important;
-        max-height:100dvh !important;
-
-        display:flex;
-        flex-direction:column;
-        justify-content:flex-start;
-        align-items:center;
-
-        gap:10px !important;
-        padding:10px 10px calc(10px + env(safe-area-inset-bottom)) !important;
-
-        overflow:hidden !important;
-        overflow-y:hidden !important;
-        overflow-x:hidden !important;
-    }
-
-    #scene5 > .photo{
-        flex:0 0 auto !important;
-        width:min(78vw,320px) !important;
-        height:min(30dvh,230px) !important;
-        min-height:0 !important;
-        max-height:30dvh !important;
-
-        object-fit:cover;
-        border-radius:20px;
-    }
-
-    #scene5 .caption{
-        flex:1 1 auto !important;
-        width:min(94vw,520px) !important;
-        min-height:0 !important;
-        height:auto !important;
-        max-height:none !important;
-
-        padding:16px 14px 14px !important;
-        border-radius:20px;
-
-        overflow:hidden !important;
-        overflow-y:hidden !important;
-        overflow-x:hidden !important;
-
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        box-sizing:border-box;
-    }
-
-    #scene5 .scene-number{
-        font-size:14px !important;
-        margin-bottom:7px !important;
-    }
-
-    #scene5 h2{
-        font-size:clamp(19px,5.6vw,26px) !important;
-        line-height:1.3 !important;
-        margin:0 0 8px !important;
-    }
-
-    #scene5 p{
-        font-size:12px !important;
-        line-height:1.45 !important;
-        margin:0 0 9px !important;
-    }
-
-    #scene5 .buttons{
-        width:100%;
-        flex:0 0 auto;
-        display:flex;
-        flex-direction:column !important;
-        align-items:center;
-        justify-content:center;
-        gap:6px !important;
-    }
-
-    #scene5 #dateBtn,
-    #scene5 #noBtn{
-        width:min(88%,280px) !important;
-        min-height:40px !important;
-        height:40px !important;
-        margin:0 !important;
-        padding:8px 12px !important;
-        font-size:12px !important;
-    }
-}
-
-@media (max-width:380px){
-    #scene5{
-        gap:7px !important;
-        padding:8px 8px calc(8px + env(safe-area-inset-bottom)) !important;
-    }
-
-    #scene5 > .photo{
-        width:min(74vw,280px) !important;
-        height:min(27dvh,200px) !important;
-        max-height:27dvh !important;
-    }
-
-    #scene5 .caption{
-        padding:13px 11px 11px !important;
-    }
-
-    #scene5 h2{
-        font-size:19px !important;
-    }
-
-    #scene5 p{
-        font-size:11px !important;
-        line-height:1.38 !important;
-    }
-
-    #scene5 #dateBtn,
-    #scene5 #noBtn{
-        width:92% !important;
-        min-height:38px !important;
-        height:38px !important;
-        font-size:11px !important;
-    }
-}
-
-
-/* ==========================================
-   GLOBAL | NO SCROLL
-   کل سایت بدون اسکرول
-========================================== */
-
-html,
-body{
-    width:100%;
-    height:100%;
-    max-width:100%;
-    max-height:100%;
-    overflow:hidden !important;
-    overscroll-behavior:none !important;
-    touch-action:pan-x pan-y;
-}
-
-.scene{
-    width:100%;
-    height:100vh;
-    min-height:100vh;
-    max-height:100vh;
-    overflow:hidden !important;
-}
-
-.scene.active{
-    overflow:hidden !important;
-}
-
-/* هیچ باکس متنی داخل Sceneها اسکرول نشود */
-#scene1 *,
-#scene2 *,
-#scene3 *,
-#scene4 *,
-#scene5 *,
-#scene6 *{
-    scrollbar-width:none;
-}
-
-#scene1 *,
-#scene2 *,
-#scene3 *,
-#scene4 *,
-#scene5 *,
-#scene6 *::-webkit-scrollbar{
-    display:none !important;
-}
-
-
-/* ==========================================
-   MOBILE | ABSOLUTELY NO SCROLL
-========================================== */
-
-@media (max-width:900px){
-
-    html,
-    body{
-        overflow:hidden !important;
-        position:fixed;
-        inset:0;
-    }
-
-    .scene,
-    .scene.active{
-        width:100%;
-        height:100dvh !important;
-        min-height:100dvh !important;
-        max-height:100dvh !important;
-        overflow:hidden !important;
-    }
-
-    /* Scene 1 */
-    #scene1{
-        padding:18px 14px;
-    }
-
-    #scene1 .content{
-        width:100%;
-        max-width:560px;
-        max-height:92dvh;
-        overflow:hidden !important;
-        padding:8px;
-    }
-
-    #scene1 h1{
-        font-size:clamp(32px,9vw,46px);
-        margin-bottom:14px;
-    }
-
-    #scene1 h2{
-        font-size:clamp(18px,5vw,24px);
-        margin-bottom:18px;
-    }
-
-    #scene1 p{
-        font-size:clamp(14px,3.8vw,18px);
-        line-height:1.85;
-        margin-bottom:24px;
-    }
-
-    #startBtn{
-        padding:13px 28px;
-        font-size:16px;
-    }
-
-    /* Scene 2 */
-    #scene2{
-        overflow:hidden !important;
-        height:100dvh !important;
-        padding:10px 10px;
-        gap:10px;
-        justify-content:flex-start;
-    }
-
-    #scene2 .photoBox{
-        width:min(90vw,400px);
-        height:34dvh;
-        min-height:170px;
-        max-height:270px;
-    }
-
-    #scene2 .caption{
-        width:min(92vw,420px);
-        max-height:calc(64dvh - 20px);
-        overflow:hidden !important;
-        padding:14px 14px 16px;
-    }
-
-    #scene2 h2{
-        font-size:clamp(19px,5.5vw,25px);
-        line-height:1.45;
-        margin-bottom:10px;
-    }
-
-    #scene2 p{
-        font-size:clamp(12px,3.5vw,15px);
-        line-height:1.72;
-    }
-
-    #nextBtn2{
-        width:min(88%,280px);
-        margin-top:10px;
-        padding:11px 16px;
-        font-size:14px;
-    }
-
-    /* Scene 3 */
-    #scene3{
-        overflow:hidden !important;
-        height:100dvh !important;
-        padding:10px 10px;
-        gap:10px;
-        justify-content:flex-start;
-    }
-
-    #scene3 .photo{
-        width:min(90vw,400px);
-        height:32dvh;
-        min-height:165px;
-        max-height:250px;
-    }
-
-    #scene3 .caption{
-        width:min(92vw,420px);
-        height:auto;
-        max-height:64dvh;
-        overflow:hidden !important;
-        padding:14px 14px 16px;
-    }
-
-    #scene3 h2{
-        font-size:clamp(19px,5.4vw,25px);
-        line-height:1.45;
-        margin-bottom:10px;
-    }
-
-    #scene3 p{
-        font-size:clamp(12px,3.4vw,15px);
-        line-height:1.7;
-        margin-bottom:14px;
-    }
-
-    #scene3 .nextBtn{
-        width:min(88%,280px);
-        padding:11px 16px;
-        font-size:14px;
-    }
-
-    /* Scene 4 */
-    #scene4{
-        overflow:hidden !important;
-        height:100dvh !important;
-        padding:10px 10px;
-        gap:10px;
-        justify-content:flex-start;
-    }
-
-    #scene4 .photo{
-        width:min(90vw,400px);
-        height:31dvh;
-        min-height:160px;
-        max-height:245px;
-    }
-
-    #scene4 .caption{
-        width:min(92vw,420px);
-        height:auto;
-        max-height:65dvh;
-        overflow:hidden !important;
-        padding:14px 14px 16px;
-    }
-
-    #scene4 h2{
-        font-size:clamp(19px,5.3vw,24px);
-        line-height:1.45;
-        margin-bottom:10px;
-    }
-
-    #scene4 p{
-        font-size:clamp(12px,3.4vw,15px);
-        line-height:1.68;
-        margin-bottom:14px;
-    }
-
-    #scene4 .nextBtn{
-        width:min(88%,280px);
-        padding:11px 16px;
-        font-size:14px;
-    }
-
-    /* Scene 5 */
-    #scene5{
-        overflow:hidden !important;
-        height:100dvh !important;
-        padding:10px 10px;
-        gap:10px;
-        justify-content:flex-start;
-    }
-
-    #scene5 > .photo{
-        width:min(88vw,390px);
-        height:28dvh;
-        min-height:150px;
-        max-height:225px;
-    }
-
-    #scene5 .caption{
-        width:min(92vw,420px);
-        height:auto;
-        max-height:68dvh;
-        overflow:hidden !important;
-        padding:14px 14px 16px;
-    }
-
-    #scene5 h2{
-        font-size:clamp(18px,5.2vw,24px);
-        line-height:1.4;
-        margin-bottom:9px;
-    }
-
-    #scene5 p{
-        font-size:clamp(11.5px,3.25vw,14px);
-        line-height:1.62;
-        margin-bottom:10px;
-    }
-
-    #scene5 .buttons{
-        flex-direction:column;
-        gap:7px;
-    }
-
-    #dateBtn,
-    #noBtn{
-        width:min(88%,300px);
-        min-height:44px;
-        font-size:13px;
-        padding:10px 14px;
-        margin:4px auto;
-    }
-
-    /* Scene 6 */
-    #scene6{
-        overflow:hidden !important;
-        height:100dvh !important;
-        padding:14px 12px;
-    }
-
-    #scene6 .finalBox{
-        width:min(92vw,520px);
-        max-height:88dvh;
-        overflow:hidden !important;
-        padding:24px 18px;
-    }
-
-    #scene6 h1{
-        font-size:clamp(26px,7.5vw,40px);
-        line-height:1.4;
-        margin-bottom:14px;
-    }
-
-    #scene6 p{
-        font-size:clamp(13px,3.5vw,17px);
-        line-height:1.8;
-        margin-bottom:14px;
-    }
-
-    #scene6 h2{
-        font-size:clamp(23px,6.5vw,34px);
-        line-height:1.4;
-    }
-
-    #scene6 .scene-number{
-        font-size:15px;
-        margin-bottom:12px;
-    }
-}
-
-/* گوشی‌های خیلی کوچک */
-@media (max-width:380px){
-
-    #scene2 .caption,
-    #scene3 .caption,
-    #scene4 .caption,
-    #scene5 .caption{
-        padding:12px 11px 14px;
-    }
-
-    #scene2 p,
-    #scene3 p,
-    #scene4 p,
-    #scene5 p{
-        line-height:1.55;
-    }
-
-    #scene5 p{
-        font-size:11.5px;
-    }
-
-    #scene6 .finalBox{
-        padding:20px 14px;
-    }
-}
-```css
-/* ==========================================
-   LOVE WEBSITE
-   COMPLETE RESPONSIVE CSS
-   Scene 1 تا Scene 6
-   Desktop + Tablet + Mobile
-   بدون تغییر HTML و JavaScript
-========================================== */
-
-
-/* ==========================================
    RESET
 ========================================== */
 
@@ -2016,38 +8,6 @@ body{
     box-sizing:border-box;
 }
 
-html,
-body{
-    width:100%;
-    height:100%;
-    min-width:0;
-    max-width:100%;
-}
-
-html{
-    background:#050509;
-}
-
-body{
-    font-family:"Vazirmatn",sans-serif;
-    background:#050509;
-    color:#fff;
-
-    overflow:hidden;
-
-    -webkit-tap-highlight-color:transparent;
-    overscroll-behavior:none;
-}
-
-
-/* ==========================================
-   BUTTON
-========================================== */
-
-button{
-    font-family:inherit;
-}
-
 
 /* ==========================================
    SCENE SYSTEM
@@ -2055,14 +15,8 @@ button{
 
 .scene{
     display:none;
-
     width:100%;
     height:100vh;
-    min-height:100vh;
-
-    position:relative;
-
-    box-sizing:border-box;
 }
 
 .scene:not(.active){
@@ -2071,17 +25,10 @@ button{
 
 .scene.active{
     display:flex !important;
-
-    animation:sceneFade .9s ease;
+    animation:sceneFade 1s ease;
 }
 
-
-/* ==========================================
-   SCENE FADE
-========================================== */
-
 @keyframes sceneFade{
-
     from{
         opacity:0;
     }
@@ -2089,69 +36,52 @@ button{
     to{
         opacity:1;
     }
-
 }
 
 
 /* ==========================================
-   SHARED
+   BODY
 ========================================== */
 
-.photo{
-    object-fit:cover;
-    object-position:center;
+body{
+
+    font-family:"Vazirmatn",sans-serif;
+
+    background:#050509;
+
+    color:white;
+
+    overflow:hidden;
+
 }
-
-.scene-number{
-    display:block;
-}
-
-
-/* ==========================================
-   SCENE 1
-========================================== */
+/* =========================
+   SCENE 1 | Welcome
+========================= */
 
 #scene1{
-
+    width:100%;
+    height:100vh;
     position:relative;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    width:100%;
-    height:100vh;
-    min-height:100vh;
-
-    padding:40px 20px;
-
     overflow:hidden;
-    isolation:isolate;
 
     background:
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(255,170,200,.18),
-            transparent 35%
-        ),
-        linear-gradient(
-            160deg,
-            #1b1018,
-            #050509
-        );
+    radial-gradient(circle at 50% 20%,rgba(255,170,200,.18),transparent 35%),
+    linear-gradient(160deg,#1b1018,#050509);
 
     animation:
-        movieOpen 1.5s ease,
-        backgroundMove 15s infinite alternate;
+    movieOpen 2s ease,
+    backgroundMove 15s infinite alternate;
 }
 
-
-/* floating background hearts */
+/* نورهای پس‌زمینه */
 
 #scene1::before{
-
-    content:"❤️  ✨  ❤️  ✨";
-
+    content:"❤️ ✨ ❤️ ✨";
     position:absolute;
     inset:0;
 
@@ -2159,28 +89,18 @@ button{
     justify-content:center;
     align-items:flex-start;
 
-    padding-top:2vh;
+    font-size:34px;
+    letter-spacing:80px;
 
-    font-size:clamp(24px,3vw,36px);
-
-    letter-spacing:clamp(20px,6vw,80px);
-
-    color:rgba(255,150,190,.42);
+    color:rgba(255,150,190,.45);
 
     animation:floatingHearts 8s linear infinite;
 
-    pointer-events:none;
-
-    z-index:0;
+    z-index:1;
 }
 
-
-/* background glow */
-
 #scene1::after{
-
     content:"";
-
     position:absolute;
 
     width:450px;
@@ -2192,58 +112,37 @@ button{
     border-radius:50%;
 
     background:
-        radial-gradient(
-            circle,
-            rgba(255,120,180,.35),
-            transparent 65%
-        );
+     radial-gradient(circle,
+    rgba(255,120,180,.35),
+    transparent 65%);
 
     filter:blur(100px);
 
     animation:glowMove 8s infinite alternate;
-
-    pointer-events:none;
-
-    z-index:0;
 }
 
-
-/* overlay */
+/* Overlay */
 
 #scene1 .overlay{
-
     position:absolute;
     inset:0;
-
     background:rgba(0,0,0,.35);
-
     z-index:1;
-
-    pointer-events:none;
 }
 
-
-/* content */
+/* محتوا */
 
 #scene1 .content{
-
     position:relative;
+    z-index:3;
 
-    z-index:5;
-
-    width:min(650px,92%);
-
-    max-height:94vh;
-
-    overflow:hidden;
-
-    padding:20px 10px;
+    width:90%;
+    max-width:650px;
 
     text-align:center;
 }
 
-
-/* top title */
+/* تیتر کوچک */
 
 #scene1 .top-title{
 
@@ -2251,153 +150,128 @@ button{
 
     color:#ffb7cd;
 
-    font-size:clamp(18px,2.2vw,22px);
+    font-size:20px;
 
-    margin-bottom:22px;
+    margin-bottom:25px;
 
-    animation:fadeDown 1.3s ease;
+    animation:fadeDown 1.5s ease;
+
 }
 
-
-/* main title */
+/* عنوان */
 
 #scene1 h1{
 
-    font-size:clamp(36px,5vw,52px);
-
-    line-height:1.3;
-
+    font-size:48px;
     font-weight:700;
 
-    margin-bottom:18px;
+    margin-bottom:20px;
 
     color:#fff;
 
-    text-shadow:
-        0 0 22px rgba(255,120,170,.55);
-
     animation:
-        titleShow 1.6s ease,
-        titleGlow 3s infinite alternate;
+    titleShow 2s ease,
+    titleGlow 3s infinite alternate;
+
 }
 
-
-/* subtitle */
+/* زیرعنوان */
 
 #scene1 h2{
 
-    font-size:clamp(20px,2.6vw,28px);
-
-    line-height:1.6;
-
+    font-size:24px;
     font-weight:400;
 
     color:#ffd9e5;
 
-    margin-bottom:24px;
+    margin-bottom:30px;
 
-    animation:fadeUp 1.8s ease;
+    animation:fadeUp 2s ease;
+
 }
 
-
-/* text */
+/* متن */
 
 #scene1 p{
 
-    font-size:clamp(15px,2vw,19px);
+    font-size:18px;
 
-    line-height:2.05;
+    line-height:2.2;
 
     color:#f1f1f1;
 
-    margin-bottom:32px;
+    margin-bottom:40px;
 
-    animation:fadeUp 2s ease;
+    animation:fadeUp 2.5s ease;
+
 }
 
-
-/* start button */
+/* دکمه شروع */
 
 #startBtn{
 
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    min-height:54px;
-
-    padding:14px 36px;
+    padding:16px 45px;
 
     border:none;
 
     border-radius:50px;
 
     background:
-        linear-gradient(
-            135deg,
-            #ff6f9c,
-            #ff3f7a
-        );
+    linear-gradient(135deg,#ff6f9c,#ff3f7a);
 
     color:#fff;
 
-    font-size:clamp(16px,2vw,19px);
+    font-size:18px;
+
+    font-family:inherit;
 
     cursor:pointer;
 
     box-shadow:
-        0 0 25px rgba(255,80,130,.6);
+    0 0 25px rgba(255,80,130,.6);
 
     animation:
-        buttonGlow 2s infinite,
-        buttonFloat 3s infinite,
-        buttonPulse 2s infinite;
+    buttonGlow 2s infinite,
+    buttonFloat 3s infinite,
+    buttonPulse 2s infinite;
 
     transition:.3s;
+
 }
+
 
 #startBtn:hover{
 
-    transform:scale(1.08);
+    transform:scale(1.12);
+
+    box-shadow:
+    0 0 40px #ff5f95,
+    0 0 90px rgba(255,80,150,.8);
 
 }
+/* قلب‌های بارانی */
 
-#startBtn:active{
-
-    transform:scale(.98);
-
-}
-
-
-/* Scene 1 hearts */
-
-#scene1 .heart,
-.heart-rain{
+#scene1 .heart{
 
     position:absolute;
 
-    top:-60px;
+    top:-50px;
+
+    z-index:5;
 
     pointer-events:none;
 
-    filter:
-        drop-shadow(
-            0 0 10px rgba(255,100,160,.8)
-        );
+    filter:drop-shadow(0 0 10px rgba(255,100,160,.8));
 
     animation:heartFall linear forwards;
 
 }
 
-.heart-rain{
-    z-index:6;
-}
 
 
-/* ==========================================
-   SCENE 1 ANIMATIONS
-========================================== */
+
+
+/* ---------- Animations ---------- */
 
 @keyframes glowMove{
 
@@ -2456,51 +330,59 @@ button{
 @keyframes titleGlow{
 
     from{
-        text-shadow:
-            0 0 15px #ff9fbd;
+        text-shadow:0 0 15px #ff9fbd;
     }
 
     to{
-        text-shadow:
-            0 0 40px #ff4f8b;
+        text-shadow:0 0 40px #ff4f8b;
     }
 
 }
 
 @keyframes buttonGlow{
 
-    0%,100%{
-        box-shadow:
-            0 0 15px rgba(255,80,130,.4);
+    0%{
+        box-shadow:0 0 15px rgba(255,80,130,.4);
     }
 
     50%{
-        box-shadow:
-            0 0 40px rgba(255,80,130,.9);
+        box-shadow:0 0 40px rgba(255,80,130,.9);
+    }
+
+    100%{
+        box-shadow:0 0 15px rgba(255,80,130,.4);
     }
 
 }
 
 @keyframes buttonFloat{
 
-    0%,100%{
+    0%{
         transform:translateY(0);
     }
 
     50%{
-        transform:translateY(-7px);
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
     }
 
 }
 
 @keyframes buttonPulse{
 
-    0%,100%{
+    0%{
         transform:scale(1);
     }
 
     50%{
-        transform:scale(1.04);
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
     }
 
 }
@@ -2539,8 +421,8 @@ button{
 
     from{
         opacity:0;
-        transform:scale(1.08);
-        filter:blur(10px);
+        transform:scale(1.15);
+        filter:blur(15px);
     }
 
     to{
@@ -2551,13 +433,11 @@ button{
 
 }
 
+
 @keyframes heartFall{
 
     0%{
-        transform:
-            translateY(-50px)
-            rotate(0deg);
-
+        transform:translateY(-50px) rotate(0deg);
         opacity:0;
     }
 
@@ -2566,281 +446,436 @@ button{
     }
 
     100%{
-        transform:
-            translateY(110vh)
-            rotate(360deg);
-
+        transform:translateY(110vh) rotate(360deg);
         opacity:0;
     }
 
 }
 
-
-/* ==========================================
-   SCENE 2
-========================================== */
+/* =========================
+   SCENE 2 | اولین خاطره
+========================= */
 
 #scene2{
-
-    position:relative;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    gap:clamp(22px,4vw,50px);
 
     width:100%;
     height:100vh;
 
-    padding:40px clamp(20px,5vw,70px);
-
+    position:relative;
     overflow:hidden;
 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:40px;
+    padding:50px;
+
     background:
-        radial-gradient(
-            circle at center,
-            rgba(255,120,170,.15),
-            transparent 40%
-        ),
-        linear-gradient(
-            135deg,
-            #09070c,
-            #1b0d18
-        );
+    radial-gradient(
+        circle at center,
+        rgba(255,120,170,.15),
+        transparent 40%
+    ),
+    linear-gradient(
+        135deg,
+        #09070c,
+        #1b0d18
+    );
+
 }
 
-
-/* photo box */
+/* =========================
+   PHOTO BOX
+========================= */
 
 #scene2 .photoBox{
 
+    width:45%;
+    height:75vh;
+
     position:relative;
-
-    flex:0 1 520px;
-
-    width:min(46vw,520px);
-
-    height:min(76vh,680px);
 
     overflow:hidden;
 
-    border-radius:32px;
+    border-radius:35px;
 
     box-shadow:
-        0 0 50px rgba(255,100,160,.35);
+    0 0 50px rgba(255,100,160,.35);
+
 }
 
-
-/* photo */
+/* عکس */
 
 #scene2 .photo{
 
     position:absolute;
-
     inset:0;
 
     width:100%;
     height:100%;
 
     object-fit:cover;
+    object-position:center;
 
-    animation:
-        photoZoom 12s ease infinite alternate;
+    animation:photoZoom 12s ease infinite alternate;
+
 }
 
-
-/* photo dark layer */
+/* تاریکی روی عکس */
 
 #scene2 .photoBox::after{
 
     content:"";
 
     position:absolute;
-
     inset:0;
 
     background:
-        linear-gradient(
-            to top,
-            rgba(0,0,0,.45),
-            transparent 55%
-        );
+    linear-gradient(
+        to top,
+        rgba(0,0,0,.4),
+        transparent
+    );
 
-    pointer-events:none;
 }
 
-
-/* caption */
+/* =========================
+   CAPTION
+========================= */
 
 #scene2 .caption{
 
-    position:relative;
+    width:45%;
 
-    z-index:2;
+    padding:30px;
 
-    flex:0 1 600px;
+    background:rgba(255,255,255,.08);
 
-    width:min(48vw,600px);
+    backdrop-filter:blur(12px);
 
-    max-height:min(76vh,680px);
-
-    overflow:hidden;
-
-    padding:
-        32px
-        clamp(22px,3vw,40px);
-
-    background:
-        rgba(255,255,255,.08);
-
-    backdrop-filter:blur(14px);
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
-    border-radius:32px;
+    border-radius:35px;
 
     text-align:center;
 
     box-shadow:
-        0 0 40px rgba(255,120,170,.2);
+    0 0 40px rgba(255,120,170,.2);
 
-    animation:captionShow2 1.6s ease;
+    animation:captionShow 2s ease;
+
+    z-index:2;
+
 }
 
-
-/* Scene number */
+/* شماره فصل */
 
 #scene2 .scene-number{
 
-    margin-bottom:18px;
+    display:block;
+
+    margin-bottom:20px;
 
     color:#ffb6d0;
 
-    font-size:19px;
+    font-size:20px;
+
 }
 
-
-/* title */
+/* عنوان */
 
 #scene2 h2{
 
-    font-size:clamp(26px,3vw,36px);
-
-    line-height:1.45;
+    font-size:34px;
 
     color:#fff;
 
-    margin-bottom:22px;
+    margin-bottom:25px;
 
     text-shadow:
-        0 0 20px #ff8fb5;
+    0 0 20px #ff8fb5;
+
 }
 
-
-/* text */
+/* متن */
 
 #scene2 p{
 
-    font-size:clamp(15px,1.7vw,18px);
+    font-size:18px;
 
-    line-height:1.95;
+    line-height:1.7;
 
     color:#fff;
 
     text-shadow:
-        0 2px 10px rgba(0,0,0,.8);
+    0 2px 10px rgba(0,0,0,.8);
+
 }
 
-
-/* next */
+/* =========================
+   NEXT BUTTON
+========================= */
 
 #nextBtn2{
 
-    margin-top:24px;
+    margin-top:25px;
 
-    min-height:50px;
-
-    padding:12px 30px;
+    padding:14px 38px;
 
     border:none;
 
     border-radius:50px;
 
     background:
-        linear-gradient(
-            135deg,
-            #ff6f9d,
-            #ff3977
-        );
+    linear-gradient(
+        135deg,
+        #ff6f9d,
+        #ff3977
+    );
 
     color:#fff;
 
-    font-size:16px;
+    font-size:17px;
+
+    font-family:inherit;
 
     cursor:pointer;
 
     box-shadow:
-        0 0 25px rgba(255,80,140,.5);
+    0 0 25px rgba(255,80,140,.5);
 
     transition:.3s;
+
 }
 
 #nextBtn2:hover{
 
-    transform:scale(1.06);
+    transform:scale(1.08);
 
 }
 
-#nextBtn2:active{
-
-    transform:scale(.98);
-
-}
-
-
-/* Scene 2 decorations */
+/* =========================
+   FLOATING HEARTS
+========================= */
 
 #scene2::before{
 
-    content:"❤️  💕  💗";
+    content:"❤️ 💕 💗";
 
     position:absolute;
 
     top:-50px;
     left:20%;
 
-    font-size:32px;
+    font-size:35px;
 
     animation:
-        fallHearts 8s linear infinite;
+    fallHearts 8s linear infinite;
 
-    pointer-events:none;
 }
+
+/* =========================
+   SNOW
+========================= */
 
 #scene2::after{
 
-    content:"❄  ❄  ❄  ❄  ❄";
+    content:"❄ ❄ ❄ ❄ ❄";
 
     position:absolute;
 
     top:-40px;
     right:20%;
 
-    font-size:28px;
+    font-size:30px;
 
     color:#fff;
 
     animation:
-        snow 10s linear infinite;
+    snow 10s linear infinite;
 
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes photoZoom{
+
+    from{
+
+        transform:scale(1);
+
+    }
+
+    to{
+
+        transform:scale(1.08);
+
+    }
+
+}
+
+@keyframes captionShow{
+
+    from{
+
+        opacity:0;
+        transform:translateX(-80px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateX(0);
+
+    }
+
+}
+
+@keyframes fallHearts{
+
+    from{
+
+        transform:translateY(-100px);
+        opacity:0;
+
+    }
+
+    20%{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:translateY(100vh);
+        opacity:0;
+
+    }
+
+}
+
+@keyframes snow{
+
+    from{
+
+        transform:translateY(-50px);
+
+    }
+
+    to{
+
+        transform:translateY(100vh);
+
+    }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+    #scene2{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        padding:25px;
+
+    }
+
+    #scene2 .photoBox{
+
+        width:90%;
+        height:45vh;
+
+    }
+
+    #scene2 .caption{
+
+        width:90%;
+
+    }
+
+    #scene2 h2{
+
+        font-size:26px;
+
+    }
+
+}
+/* =========================
+   SCENE 3 | خاطره دوم
+========================= */
+
+#scene3{
+    position:relative;
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+
+    gap:50px;
+    padding:40px 60px;
+
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle at center,
+    rgba(255,120,170,.12),
+    transparent 45%),
+    linear-gradient(135deg,#08080d,#120b12);
+}
+
+/* =========================
+   Overlay
+========================= */
+
+#scene3 .overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to right,
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.2)
+    );
+    z-index:1;
     pointer-events:none;
 }
 
+/* =========================
+   Photo
+========================= */
 
-/* Scene 2 animations */
+#scene3 .photo{
+
+    position:relative;
+
+    width:420px;
+    height:620px;
+
+    object-fit:cover;
+    object-position:center;
+
+    border-radius:30px;
+
+    border:4px solid rgba(255,255,255,.12);
+
+    box-shadow:
+    0 0 25px rgba(255,120,170,.45),
+    0 0 60px rgba(255,120,170,.25);
+
+    animation:photoZoom 12s ease infinite alternate;
+
+    z-index:2;
+}
 
 @keyframes photoZoom{
 
@@ -2849,12 +884,47 @@ button{
     }
 
     to{
-        transform:scale(1.07);
+        transform:scale(1.06);
     }
 
 }
 
-@keyframes captionShow2{
+/* =========================
+   Caption Box
+========================= */
+
+#scene3 .caption{
+
+    position:relative;
+
+    width:420px;
+    height:620px;
+
+    padding:35px;
+
+    background:rgba(20,20,25,.72);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:30px;
+
+    box-shadow:
+    0 0 35px rgba(255,120,170,.22);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    text-align:center;
+
+    color:#fff;
+
+    z-index:2;
+
+    animation:captionShow 1.8s ease;
+}
+
+@keyframes captionShow{
 
     from{
         opacity:0;
@@ -2868,175 +938,13 @@ button{
 
 }
 
-@keyframes fallHearts{
-
-    from{
-        transform:translateY(-100px);
-        opacity:0;
-    }
-
-    20%{
-        opacity:1;
-    }
-
-    to{
-        transform:translateY(100vh);
-        opacity:0;
-    }
-
-}
-
-@keyframes snow{
-
-    from{
-        transform:translateY(-50px);
-    }
-
-    to{
-        transform:translateY(100vh);
-    }
-
-}
-
-
-/* ==========================================
-   SCENE 3
-========================================== */
-
-#scene3{
-
-    position:relative;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    gap:clamp(25px,5vw,60px);
-
-    width:100%;
-    height:100vh;
-
-    padding:40px 60px;
-
-    overflow:hidden;
-
-    isolation:isolate;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,120,170,.12),
-            transparent 45%
-        ),
-        linear-gradient(
-            135deg,
-            #08080d,
-            #120b12
-        );
-}
-
-
-/* overlay */
-
-#scene3 .overlay{
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-        linear-gradient(
-            to right,
-            rgba(0,0,0,.45),
-            rgba(0,0,0,.2)
-        );
-
-    z-index:0;
-
-    pointer-events:none;
-}
-
-
-/* photo */
-
-#scene3 .photo{
-
-    position:relative;
-
-    flex:0 1 420px;
-
-    width:min(40vw,420px);
-
-    height:min(76vh,620px);
-
-    object-fit:cover;
-
-    object-position:center;
-
-    border-radius:30px;
-
-    border:
-        4px solid rgba(255,255,255,.12);
-
-    box-shadow:
-        0 0 25px rgba(255,120,170,.45),
-        0 0 60px rgba(255,120,170,.25);
-
-    animation:
-        photoZoom 12s ease infinite alternate;
-
-    z-index:2;
-}
-
-
-/* caption */
-
-#scene3 .caption{
-
-    position:relative;
-
-    flex:0 1 500px;
-
-    width:min(43vw,500px);
-
-    max-height:min(76vh,620px);
-
-    overflow:hidden;
-
-    padding:
-        35px
-        clamp(22px,3vw,40px);
-
-    background:
-        rgba(20,20,25,.72);
-
-    backdrop-filter:blur(15px);
-
-    border-radius:30px;
-
-    box-shadow:
-        0 0 35px rgba(255,120,170,.22);
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    text-align:center;
-
-    color:#fff;
-
-    z-index:3;
-
-    animation:captionShow3 1.5s ease;
-}
-
-
-/* Scene number */
+/* =========================
+   Title
+========================= */
 
 #scene3 .scene-number{
+
+    display:block;
 
     color:#ffb5d1;
 
@@ -3045,82 +953,90 @@ button{
     margin-bottom:15px;
 }
 
-
-/* title */
-
 #scene3 h2{
 
-    font-size:clamp(25px,3vw,34px);
-
-    line-height:1.45;
+    font-size:32px;
 
     color:#ffe0ea;
 
-    margin-bottom:18px;
+    margin-bottom:20px;
 
-    text-shadow:
-        0 0 15px rgba(255,120,170,.5);
+    text-shadow:0 0 15px rgba(255,120,170,.5);
 }
-
-
-/* text */
 
 #scene3 p{
 
-    font-size:clamp(15px,1.7vw,18px);
+    font-size:17px;
 
     line-height:1.9;
 
     color:#fff;
 
-    margin-bottom:26px;
+    margin-bottom:28px;
 }
 
-
-/* button */
+/* =========================
+   Next Button
+========================= */
 
 #scene3 .nextBtn{
 
-    width:min(240px,90%);
+    width:240px;
 
     margin:0 auto;
 
-    padding:14px 18px;
+    padding:16px;
 
     border:none;
 
     border-radius:50px;
 
     background:
-        linear-gradient(
-            135deg,
-            #ff5d95,
-            #ff2f74
-        );
+    linear-gradient(135deg,#ff5d95,#ff2f74);
 
     color:#fff;
 
-    font-size:17px;
+    font-size:18px;
+
+    font-family:inherit;
 
     cursor:pointer;
 
     box-shadow:
-        0 0 25px rgba(255,90,150,.5);
+    0 0 25px rgba(255,90,150,.5);
 
     transition:.3s;
 
-    animation:
-        buttonPulse 2s infinite;
+    animation:buttonPulse 2s infinite;
 }
 
 #scene3 .nextBtn:hover{
 
-    transform:scale(1.06);
+    transform:scale(1.07);
+
+    box-shadow:
+    0 0 40px rgba(255,90,150,.8);
+}
+
+@keyframes buttonPulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
+    }
 
 }
 
-
-/* petals */
+/* =========================
+   Falling Flowers
+========================= */
 
 .petal{
 
@@ -3132,20 +1048,28 @@ button{
 
     opacity:.85;
 
-    z-index:2;
+    z-index:3;
 
-    animation:
-        fall 10s linear infinite;
-
-    pointer-events:none;
+    animation:fall 10s linear infinite;
 }
 
+@keyframes fall{
 
-/* floating hearts */
+    from{
+        transform:translateY(-50px) rotate(0deg);
+    }
 
-#scene3 .heart,
-#scene4 .heart,
-#scene5 .heart{
+    to{
+        transform:translateY(120vh) rotate(360deg);
+    }
+
+}
+
+/* =========================
+   Floating Hearts
+========================= */
+
+.heart{
 
     position:absolute;
 
@@ -3153,83 +1077,15 @@ button{
 
     font-size:22px;
 
-    z-index:2;
+    z-index:3;
 
-    pointer-events:none;
-}
-
-#scene3 .heart{
-
-    animation:
-        heartUp 8s linear infinite;
-}
-
-
-/* spark */
-
-.spark{
-
-    position:absolute;
-
-    width:5px;
-    height:5px;
-
-    border-radius:50%;
-
-    background:#fff;
-
-    box-shadow:
-        0 0 10px #fff,
-        0 0 20px #ff8db8;
-
-    animation:
-        twinkle 2s infinite alternate;
-
-    z-index:2;
-
-    pointer-events:none;
-}
-
-
-/* Scene 3 animations */
-
-@keyframes captionShow3{
-
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
-@keyframes fall{
-
-    from{
-        transform:
-            translateY(-50px)
-            rotate(0deg);
-    }
-
-    to{
-        transform:
-            translateY(120vh)
-            rotate(360deg);
-    }
-
+    animation:heartUp 8s linear infinite;
 }
 
 @keyframes heartUp{
 
     from{
-        transform:
-            translateY(0)
-            scale(.8);
-
+        transform:translateY(0) scale(.8);
         opacity:0;
     }
 
@@ -3238,13 +1094,34 @@ button{
     }
 
     to{
-        transform:
-            translateY(-120vh)
-            scale(1.4);
-
+        transform:translateY(-120vh) scale(1.4);
         opacity:0;
     }
 
+}
+
+/* =========================
+   Sparkles
+========================= */
+
+.spark{
+
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    background:#fff;
+
+    border-radius:50%;
+
+    box-shadow:
+    0 0 10px #fff,
+    0 0 20px #ff8db8;
+
+    animation:twinkle 2s infinite alternate;
+
+    z-index:3;
 }
 
 @keyframes twinkle{
@@ -3261,46 +1138,60 @@ button{
 
 }
 
+/* =========================
+   Mobile
+========================= */
 
-/* ==========================================
+@media(max-width:900px){
+
+    #scene3{
+
+        flex-direction:column;
+
+        padding:25px;
+
+        gap:25px;
+    }
+
+    #scene3 .photo{
+
+        width:90%;
+        height:42vh;
+    }
+
+    #scene3 .caption{
+
+        width:90%;
+        height:auto;
+    }
+
+}
+/* =========================
    SCENE 4
-========================================== */
+========================= */
 
 #scene4{
-
-    position:relative;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    gap:clamp(25px,4vw,55px);
-
     width:100%;
     height:100vh;
 
-    padding:40px 60px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
 
+    padding:60px;
+
+    position:relative;
     overflow:hidden;
 
-    isolation:isolate;
-
     background:
-        radial-gradient(
-            circle at center,
-            rgba(255,120,170,.12),
-            transparent 45%
-        ),
-        linear-gradient(
-            135deg,
-            #09070d,
-            #170d16
-        );
+    radial-gradient(circle at center,
+    rgba(255,120,170,.12),
+    transparent 45%),
+    linear-gradient(135deg,#09070d,#170d16);
 }
 
-
-/* glow */
+/* نور پشت زمینه */
 
 #scene4::before{
 
@@ -3308,29 +1199,45 @@ button{
 
     position:absolute;
 
-    width:520px;
-    height:520px;
+    width:600px;
+    height:600px;
 
     border-radius:50%;
 
-    background:
-        rgba(255,110,170,.20);
+    background:rgba(255,120,170,.18);
 
-    filter:blur(130px);
+    filter:blur(160px);
 
-    left:-140px;
-    top:-140px;
+    right:-180px;
+    top:-180px;
 
-    animation:
-        glow4 8s infinite alternate;
-
-    pointer-events:none;
-
-    z-index:0;
+    animation:glowMove 8s infinite alternate;
 }
 
+/* عکس */
 
-/* overlay */
+#scene4 .photo{
+
+    width:420px;
+    height:620px;
+
+    object-fit:cover;
+    object-position:center;
+
+    border-radius:30px;
+
+    border:4px solid rgba(255,255,255,.15);
+
+    box-shadow:
+    0 0 30px rgba(255,120,170,.6),
+    0 0 80px rgba(255,120,170,.35);
+
+    z-index:2;
+
+    animation:photoZoom 12s ease infinite alternate;
+}
+
+/* لایه تیره */
 
 #scene4 .overlay{
 
@@ -3339,154 +1246,45 @@ button{
     inset:0;
 
     background:
-        linear-gradient(
-            to right,
-            rgba(0,0,0,.22),
-            rgba(0,0,0,.10)
-        );
+    linear-gradient(
+        to right,
+        rgba(0,0,0,.20),
+        rgba(0,0,0,.10)
+    );
 
     pointer-events:none;
 
-    z-index:0;
+    z-index:1;
 }
 
-
-/* photo box */
-
-#scene4 .photoBox{
-
-    position:relative;
-
-    flex:0 1 430px;
-
-    width:min(40vw,430px);
-
-    height:min(76vh,620px);
-
-    overflow:hidden;
-
-    border-radius:30px;
-
-    border:
-        4px solid rgba(255,255,255,.15);
-
-    box-shadow:
-        0 0 30px rgba(255,120,170,.6),
-        0 0 80px rgba(255,120,170,.35);
-
-    z-index:2;
-}
-
-
-/* photo */
-
-#scene4 .photo{
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    object-position:center;
-
-    animation:
-        photoZoom4 15s ease-in-out infinite alternate;
-}
-
-
-/* photo dark layer */
-
-#scene4 .photoBox::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(0,0,0,.4),
-            transparent 55%
-        );
-
-    pointer-events:none;
-}
-
-
-/* caption */
-
+/* باکس متن */
 #scene4 .caption{
 
-    position:relative;
+    width:420px;
+    height:620px;
 
-    flex:0 1 500px;
+    padding:25px;
 
-    width:min(44vw,500px);
-
-    max-height:min(76vh,620px);
-
-    overflow:hidden;
-
-    padding:
-        32px
-        clamp(22px,3vw,38px);
-
-    background:
-        rgba(20,20,25,.74);
-
+    background:rgba(20,20,25,.72);
     backdrop-filter:blur(14px);
 
     border-radius:30px;
 
-    box-shadow:
-        0 0 35px rgba(255,120,170,.25);
+    box-shadow:0 0 35px rgba(255,120,170,.25);
 
     display:flex;
-
     flex-direction:column;
-
     justify-content:center;
 
     text-align:center;
 
     color:#fff;
-
-    z-index:3;
-
-    animation:
-        scene4Box 1.5s ease;
 }
 
-
-/* inner overlay */
-
-#scene4 .caption > .overlay{
-
-    position:absolute;
-
-    inset:0;
-
-    border-radius:inherit;
-
-    background:
-        rgba(0,0,0,.08);
-
-    z-index:0;
-}
-
-#scene4 .caption > *:not(.overlay){
-
-    position:relative;
-
-    z-index:1;
-}
-
-
-/* number */
-
+/* شماره فصل */
 #scene4 .scene-number{
+
+    display:block;
 
     font-size:18px;
 
@@ -3495,99 +1293,214 @@ button{
     margin-bottom:12px;
 }
 
-
-/* title */
-
+/* عنوان */
 #scene4 h2{
 
-    font-size:clamp(24px,2.8vw,32px);
-
-    line-height:1.45;
+    font-size:30px;
 
     color:#ffd6e7;
 
     margin-bottom:15px;
 }
 
-
-/* text */
-
+/* متن */
 #scene4 p{
 
-    font-size:clamp(15px,1.65vw,18px);
+    font-size:17px;
 
-    line-height:1.7;
+    line-height:1.45;
 
-    margin:0 0 20px;
+    margin:0;
 
     color:#fff;
-
-    animation:
-        textShow4 3s ease;
 }
-
-
-/* button */
+/* دکمه */
 
 #scene4 .nextBtn{
 
-    width:min(230px,90%);
+    width:230px;
 
     margin:auto;
 
-    padding:14px 18px;
+    padding:16px;
 
     border:none;
 
     border-radius:50px;
 
     background:
-        linear-gradient(
-            135deg,
-            #ff5c94,
-            #ff2f74
-        );
+    linear-gradient(135deg,#ff5c94,#ff2f74);
 
     color:#fff;
 
-    font-size:17px;
+    font-size:18px;
 
     cursor:pointer;
 
     box-shadow:
-        0 0 25px rgba(255,90,150,.5);
+    0 0 25px rgba(255,90,150,.5);
 
     transition:.3s;
 }
 
 #scene4 .nextBtn:hover{
 
-    transform:scale(1.06);
+    transform:scale(1.08);
+}
+#scene4 .caption{
+    animation: scene4Box 1.8s ease;
+}
+
+@keyframes scene4Box{
+
+    from{
+        opacity:0;
+        transform:translateY(60px) scale(.9);
+        filter:blur(8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+        filter:blur(0);
+    }
+
+}
+#scene4 .photo{
+
+    animation:photoZoom4 15s ease-in-out infinite alternate;
 
 }
 
+@keyframes photoZoom4{
 
-/* heart */
+    from{
+        transform:scale(1);
+    }
 
+    to{
+        transform:scale(1.08);
+    }
+
+}
+#scene4::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:rgba(255,110,170,.22);
+
+    filter:blur(130px);
+
+    left:-120px;
+    top:-120px;
+
+    animation:glow4 8s infinite alternate;
+
+}
+
+@keyframes glow4{
+
+    from{
+        transform:translate(0,0);
+    }
+
+    to{
+        transform:translate(60px,40px);
+    }
+
+}
 #scene4 .heart{
 
-    animation:
-        heartUp4 8s linear infinite;
+    position:absolute;
+
+    bottom:-40px;
+
+    font-size:22px;
+
+    animation:heartUp4 8s linear infinite;
 
     opacity:.8;
+
+    z-index:1;
+
 }
 
+@keyframes heartUp4{
 
-/* spark */
+    from{
+        transform:translateY(0) scale(.7);
+        opacity:0;
+    }
 
-#scene4 .spark{
+    25%{
+        opacity:1;
+    }
 
-    animation:
-        twinkle4 2s infinite;
+    to{
+        transform:translateY(-110vh) scale(1.4);
+        opacity:0;
+    }
+
+}
+.spark{
+
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    box-shadow:0 0 15px #fff;
+
+    animation:twinkle4 2s infinite;
+
 }
 
+@keyframes twinkle4{
 
-/* particle */
+    0%,100%{
+        opacity:.2;
+        transform:scale(.5);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.8);
+    }
+
+}
+#scene4 p{
+
+    overflow:hidden;
+
+    animation:textShow4 3s ease;
+
+}
+
+@keyframes textShow4{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+/* ذرات نور - بدون خراب کردن چیدمان */
 
 #scene4 .particle{
 
@@ -3608,111 +1521,9 @@ button{
 
     pointer-events:none;
 
-    z-index:2;
+    z-index:1;
 
-    animation:
-        particleFloat 12s linear infinite;
-}
-
-
-/* Scene 4 animations */
-
-@keyframes glow4{
-
-    from{
-        transform:translate(0,0);
-    }
-
-    to{
-        transform:translate(60px,40px);
-    }
-
-}
-
-@keyframes heartUp4{
-
-    from{
-        transform:
-            translateY(0)
-            scale(.7);
-
-        opacity:0;
-    }
-
-    25%{
-        opacity:1;
-    }
-
-    to{
-        transform:
-            translateY(-110vh)
-            scale(1.4);
-
-        opacity:0;
-    }
-
-}
-
-@keyframes twinkle4{
-
-    0%,100%{
-        opacity:.2;
-        transform:scale(.5);
-    }
-
-    50%{
-        opacity:1;
-        transform:scale(1.8);
-    }
-
-}
-
-@keyframes scene4Box{
-
-    from{
-        opacity:0;
-        transform:
-            translateY(50px)
-            scale(.94);
-
-        filter:blur(7px);
-    }
-
-    to{
-        opacity:1;
-        transform:
-            translateY(0)
-            scale(1);
-
-        filter:blur(0);
-    }
-
-}
-
-@keyframes photoZoom4{
-
-    from{
-        transform:scale(1);
-    }
-
-    to{
-        transform:scale(1.07);
-    }
-
-}
-
-@keyframes textShow4{
-
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
+    animation:particleFloat 12s linear infinite;
 }
 
 @keyframes particleFloat{
@@ -3733,36 +1544,34 @@ button{
 
 }
 
-
-/* ==========================================
-   SCENE 5
-========================================== */
+/* =========================
+   SCENE 5 | دعوت دوباره
+========================= */
 
 #scene5{
 
     position:relative;
 
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    gap:clamp(25px,4vw,55px);
-
     width:100%;
     height:100vh;
 
-    padding:40px clamp(20px,5vw,70px);
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:25px;
+
+    padding:50px;
 
     overflow:hidden;
 
-    isolation:isolate;
-
     background:#08070b;
+
 }
 
-
-/* background glow */
+/* نور پس زمینه */
 
 #scene5::before{
 
@@ -3775,330 +1584,16 @@ button{
 
     border-radius:50%;
 
-    background:
-        rgba(255,120,170,.18);
+    background:rgba(255,120,170,.18);
 
     filter:blur(130px);
 
     top:-150px;
     left:-150px;
 
-    animation:
-        glow5 8s infinite alternate;
-
-    pointer-events:none;
-
-    z-index:0;
-}
-
-
-/* photo */
-
-#scene5 > .photo{
-
-    position:relative;
-
-    flex:0 1 500px;
-
-    width:min(46vw,500px);
-
-    height:min(78vh,650px);
-
-    border-radius:30px;
-
-    border:
-        3px solid rgba(255,255,255,.15);
-
-    object-fit:cover;
-
-    object-position:center;
-
-    filter:
-        contrast(1.08)
-        brightness(.88)
-        saturate(1.12);
-
-    box-shadow:
-        0 0 30px rgba(255,120,170,.45),
-        0 0 70px rgba(255,120,170,.25);
-
-    z-index:1;
-
-    animation:
-        photoEnter5 1.5s ease .2s both,
-        photoZoom 12s ease infinite alternate;
-}
-
-
-/* overlay */
-
-#scene5 > .overlay{
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-        rgba(0,0,0,.10);
-
-    pointer-events:none;
-
-    z-index:0;
-}
-
-
-/* caption */
-
-#scene5 .caption{
-
-    position:relative;
-
-    flex:0 1 520px;
-
-    width:min(45vw,520px);
-
-    max-height:min(78vh,650px);
-
-    overflow:hidden;
-
-    padding:
-        30px
-        clamp(22px,3vw,40px);
-
-    background:
-        rgba(20,18,30,.84);
-
-    backdrop-filter:blur(16px);
-
-    border-radius:30px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    text-align:center;
-
-    color:#fff;
-
-    box-shadow:
-        0 0 35px rgba(255,120,170,.25);
-
-    z-index:3;
-
-    animation:
-        captionDrop5 1.4s ease both;
-}
-
-
-/* inner overlay */
-
-#scene5 .caption > .overlay{
-
-    position:absolute;
-
-    inset:0;
-
-    border-radius:inherit;
-
-    background:
-        rgba(0,0,0,.03);
-
-    pointer-events:none;
-
-    z-index:0;
-}
-
-#scene5 .caption > *:not(.overlay){
-
-    position:relative;
-
-    z-index:2;
-}
-
-
-/* textBox */
-
-#scene5 .textBox{
-
-    flex:1;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-}
-
-
-/* scene number */
-
-#scene5 .scene-number{
-
-    margin-bottom:16px;
-
-    color:#ffb6d2;
-
-    font-size:20px;
-}
-
-
-/* title */
-
-#scene5 h2{
-
-    font-size:clamp(24px,2.8vw,32px);
-
-    line-height:1.45;
-
-    margin-bottom:14px;
-}
-
-
-/* paragraph */
-
-#scene5 p{
-
-    font-size:clamp(14px,1.5vw,17px);
-
-    line-height:1.65;
-
-    margin-bottom:16px;
-
-    color:#fff;
-}
-
-
-/* buttons */
-
-#scene5 .buttons{
-
-    width:100%;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:16px;
-
-    flex-wrap:wrap;
-
-    margin-top:4px;
-}
-
-
-/* date button */
-
-#dateBtn{
-
-    width:min(230px,100%);
-
-    min-height:48px;
-
-    padding:12px 18px;
-
-    border:none;
-
-    border-radius:45px;
-
-    font-size:14px;
-
-    font-weight:bold;
-
-    color:#fff;
-
-    cursor:pointer;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff77aa,
-            #ff2d74
-        );
-
-    box-shadow:
-        0 0 20px #ff5f95,
-        0 0 50px rgba(255,90,150,.6);
-
-    animation:
-        buttonPulse 2s infinite;
-
-    transition:.35s;
-}
-
-
-/* no button */
-
-#noBtn{
-
-    width:min(200px,100%);
-
-    min-height:48px;
-
-    padding:12px 18px;
-
-    border-radius:45px;
-
-    border:
-        2px solid rgba(255,255,255,.25);
-
-    background:
-        rgba(255,255,255,.08);
-
-    backdrop-filter:blur(10px);
-
-    color:#fff;
-
-    font-size:14px;
-
-    cursor:pointer;
-
-    transition:.35s;
-}
-
-
-/* hover */
-
-#dateBtn:hover{
-
-    transform:scale(1.06);
+    animation:glow5 8s infinite alternate;
 
 }
-
-#noBtn:hover{
-
-    background:
-        rgba(255,255,255,.18);
-
-    transform:scale(1.04);
-}
-
-
-/* Scene 5 particles */
-
-#scene5 .heart{
-
-    animation:
-        heartUp5 8s linear infinite;
-}
-
-#scene5 .petal{
-
-    animation:
-        petalFall5 10s linear infinite;
-}
-
-#scene5 .spark{
-
-    animation:
-        twinkle5 2s infinite;
-}
-
-
-/* Scene 5 animations */
 
 @keyframes glow5{
 
@@ -4112,59 +1607,332 @@ button{
 
 }
 
+/* عکس */
+
+#scene5 .photo{
+
+    width:42%;
+
+    height:82vh;
+
+    object-fit:cover;
+
+    object-position:center;
+
+    border-radius:30px;
+
+    border:3px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 0 30px rgba(255,120,170,.45),
+        0 0 70px rgba(255,120,170,.25);
+
+    z-index:1;
+
+}
+#scene5 .photo{
+
+    filter:
+    contrast(1.1)
+    brightness(.85)
+    saturate(1.15);
+
+   animation:
+    photoEnter5 1.8s ease .3s both,
+    photoZoom 12s ease infinite alternate;
+
+}
 @keyframes photoEnter5{
 
     from{
+
         opacity:0;
 
         transform:
-            translateX(-60px)
-            scale(.92);
+        translateX(-80px)
+        scale(.9);
+
     }
 
     to{
+
         opacity:1;
 
         transform:
-            translateX(0)
-            scale(1);
+        translateX(0)
+        scale(1);
+
     }
 
 }
 
-@keyframes captionDrop5{
+/* باکس متن */
 
-    0%{
+#scene5 .caption{
+
+    width:38%;
+    min-height:82vh;
+
+    padding:28px;
+
+    background:rgba(20,18,30,.82);
+
+    backdrop-filter:blur(16px);
+
+    border-radius:30px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    text-align:center;
+
+    color:#fff;
+
+    box-shadow:0 0 35px rgba(255,120,170,.25);
+
+    z-index:3;
+
+animation:captionDrop5 1.4s ease forwards;
+
+}
+  
+
+#scene5 .textBox{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+#scene5 .buttons{
+
+    width:auto;
+
+    min-height:auto;
+
+    padding:0;
+
+    background:transparent;
+
+    backdrop-filter:none;
+
+    border-radius:0;
+
+    display:flex;
+
+    flex-direction:row;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:25px;
+
+    box-shadow:none;
+
+    z-index:3;
+
+}
+@keyframes captionShow5{
+
+    from{
         opacity:0;
-
-        transform:
-            translateY(-100px)
-            scale(.95);
+        transform:translateY(50px);
     }
 
-    70%{
-        transform:
-            translateY(10px)
-            scale(1.01);
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* متن */
+
+#scene5 .scene-number{
+
+    display:block;
+
+    margin-bottom:18px;
+
+    color:#ffb6d2;
+
+    font-size:20px;
+
+}
+
+#scene5 h2{
+
+    font-size:30px;
+
+    margin-bottom:15px;
+}
+#scene5 p{
+
+    font-size:15px;
+
+    line-height:1.4;
+
+    margin-bottom:14px;
+
+    color:#fff;
+}
+
+/* دکمه */
+
+#scene5 .nextBtn{
+
+    width:200px;
+
+    margin:25px auto 0;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:linear-gradient(135deg,#ff5d95,#ff2d74);
+
+    color:#fff;
+
+    font-size:12px;
+
+    cursor:pointer;
+
+    box-shadow:0 0 25px rgba(255,90,150,.5);
+
+    transition:.3s;
+
+}
+#dateBtn{
+
+    width:230px;
+
+    margin:10px auto;
+
+    padding:13px 18px;
+
+    border:none;
+
+    border-radius:45px;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    background:linear-gradient(
+        135deg,
+        #ff77aa,
+        #ff2d74
+    );
+
+    box-shadow:
+        0 0 20px #ff5f95,
+        0 0 50px rgba(255,90,150,.6);
+
+    animation:buttonPulse 2s infinite;
+
+    transition:.35s;
+
+}
+#noBtn{
+
+    width:200px;
+
+    margin:10px auto;
+
+   padding:13px 18px;
+
+    border-radius:45px;
+
+    border:2px solid rgba(255,255,255,.25);
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(10px);
+
+    color:white;
+
+    font-size:12px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+#noBtn:hover{
+
+    background:rgba(255,255,255,.18);
+
+    transform:scale(1.05);
+
+}
+
+#dateBtn:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+        0 0 35px #ff5f95,
+        0 0 60px rgba(255,90,150,.9);
+
+}
+#scene5 .nextBtn:hover{
+
+    transform:scale(1.06);
+
+}
+@keyframes buttonPulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+        box-shadow:
+            0 0 35px #ff5f95,
+            0 0 80px rgba(255,90,150,.8);
     }
 
     100%{
-        opacity:1;
-
-        transform:
-            translateY(0)
-            scale(1);
+        transform:scale(1);
     }
+
+}
+
+
+/* قلب */
+
+#scene5 .heart{
+
+    position:absolute;
+
+    bottom:-40px;
+
+    font-size:20px;
+
+    animation:heartUp5 8s linear infinite;
+
+    z-index:1;
 
 }
 
 @keyframes heartUp5{
 
     from{
-        transform:
-            translateY(0)
-            scale(.8);
-
+        transform:translateY(0) scale(.8);
         opacity:0;
     }
 
@@ -4173,28 +1941,57 @@ button{
     }
 
     to{
-        transform:
-            translateY(-110vh)
-            scale(1.4);
-
+        transform:translateY(-110vh) scale(1.4);
         opacity:0;
     }
+
+}
+
+/* گلبرگ */
+
+#scene5 .petal{
+
+    position:absolute;
+
+    top:-40px;
+
+    font-size:22px;
+
+    animation:petalFall5 10s linear infinite;
+
+    z-index:1;
 
 }
 
 @keyframes petalFall5{
 
     from{
-        transform:
-            translateY(-50px)
-            rotate(0deg);
+        transform:translateY(-50px) rotate(0deg);
     }
 
     to{
-        transform:
-            translateY(120vh)
-            rotate(360deg);
+        transform:translateY(120vh) rotate(360deg);
     }
+
+}
+
+/* ستاره */
+
+#scene5 .spark{
+
+    position:absolute;
+
+    width:4px;
+
+    height:4px;
+
+    background:#fff;
+
+    border-radius:50%;
+
+    box-shadow:0 0 15px #fff;
+
+    animation:twinkle5 2s infinite;
 
 }
 
@@ -4210,135 +2007,507 @@ button{
         transform:scale(1.8);
     }
 
+}  
+@keyframes captionDrop5{
+
+    0%{
+        opacity:0;
+        transform:translateY(-180px) scale(.95);
+    }
+
+    70%{
+        transform:translateY(15px) scale(1.02);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+/* =========================================================
+   MOBILE OPTIMIZATION | گوشی موبایل
+   فقط برای نمایشگرهای کوچک - دسکتاپ بدون تغییر
+========================================================= */
+
+@media (max-width: 900px){
+
+    html,
+    body{
+        width:100%;
+        min-height:100%;
+    }
+
+    body{
+        overflow:hidden;
+    }
+
+    .scene{
+        width:100%;
+        min-height:100dvh;
+        height:100dvh;
+        overflow-y:auto;
+        overflow-x:hidden;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    .scene.active{
+        display:flex !important;
+    }
+
+    /* =========================
+       SCENE 1 | شروع
+    ========================= */
+
+    #scene1{
+        min-height:100dvh;
+        height:100dvh;
+        padding:24px 18px;
+    }
+
+    #scene1 .content{
+        width:100%;
+        max-width:100%;
+        padding:10px 4px;
+    }
+
+    #scene1 .top-title{
+        font-size:17px;
+        margin-bottom:16px;
+    }
+
+    #scene1 h1{
+        font-size:clamp(30px, 9vw, 42px);
+        line-height:1.35;
+        margin-bottom:14px;
+    }
+
+    #scene1 h2{
+        font-size:clamp(18px, 5vw, 24px);
+        line-height:1.7;
+        margin-bottom:20px;
+    }
+
+    #scene1 p{
+        font-size:15px;
+        line-height:2;
+        margin-bottom:28px;
+    }
+
+    #startBtn{
+        width:min(88%, 320px);
+        padding:14px 20px;
+        font-size:16px;
+    }
+
+    #scene1::before{
+        font-size:25px;
+        letter-spacing:20px;
+    }
+
+    /* =========================
+       SCENE 2 | اولین خاطره
+    ========================= */
+
+    #scene2{
+        min-height:100dvh;
+        height:100dvh;
+        flex-direction:column;
+        justify-content:flex-start;
+        gap:18px;
+        padding:18px 14px 28px;
+        overflow-y:auto;
+    }
+
+    #scene2 .photoBox{
+        flex:0 0 auto;
+        width:92%;
+        height:36dvh;
+        max-height:360px;
+        min-height:220px;
+        margin:0 auto;
+        border-radius:24px;
+    }
+
+    #scene2 .caption{
+        width:92%;
+        flex:0 0 auto;
+        padding:22px 18px;
+        margin:0 auto;
+        border-radius:24px;
+    }
+
+    #scene2 .scene-number{
+        font-size:16px;
+        margin-bottom:12px;
+    }
+
+    #scene2 h2{
+        font-size:24px;
+        line-height:1.5;
+        margin-bottom:16px;
+    }
+
+    #scene2 p{
+        font-size:15px;
+        line-height:1.9;
+    }
+
+    #nextBtn2{
+        width:min(90%, 280px);
+        margin-top:18px;
+        padding:13px 20px;
+        font-size:15px;
+    }
+
+    /* =========================
+       SCENE 3 | خاطره دوم
+    ========================= */
+
+    #scene3{
+        min-height:100dvh;
+        height:100dvh;
+        flex-direction:column;
+        justify-content:flex-start;
+        gap:18px;
+        padding:18px 14px 28px;
+        overflow-y:auto;
+    }
+
+    #scene3 .photo{
+        flex:0 0 auto;
+        width:92%;
+        height:38dvh;
+        min-height:230px;
+        max-height:380px;
+        border-radius:24px;
+    }
+
+    #scene3 .caption{
+        width:92%;
+        height:auto;
+        min-height:0;
+        padding:24px 18px;
+        border-radius:24px;
+    }
+
+    #scene3 .scene-number{
+        font-size:16px;
+        margin-bottom:12px;
+    }
+
+    #scene3 h2{
+        font-size:24px;
+        line-height:1.5;
+        margin-bottom:14px;
+    }
+
+    #scene3 p{
+        font-size:15px;
+        line-height:1.9;
+        margin-bottom:20px;
+    }
+
+    #scene3 .nextBtn{
+        width:min(90%, 280px);
+        padding:13px 18px;
+        font-size:16px;
+    }
+
+    /* =========================
+       SCENE 4 | حرف دل
+    ========================= */
+
+    #scene4{
+        min-height:100dvh;
+        height:100dvh;
+        flex-direction:column;
+        justify-content:flex-start;
+        gap:18px;
+        padding:18px 14px 28px;
+        overflow-y:auto;
+    }
+
+    #scene4 .photo{
+        flex:0 0 auto;
+        width:92%;
+        height:38dvh;
+        min-height:230px;
+        max-height:380px;
+        border-radius:24px;
+    }
+
+    #scene4 .caption{
+        width:92%;
+        height:auto;
+        min-height:0;
+        padding:24px 18px;
+        border-radius:24px;
+    }
+
+    #scene4 .scene-number{
+        font-size:16px;
+        margin-bottom:10px;
+    }
+
+    #scene4 h2{
+        font-size:23px;
+        line-height:1.5;
+        margin-bottom:14px;
+    }
+
+    #scene4 p{
+        font-size:15px;
+        line-height:1.85;
+    }
+
+    #scene4 .nextBtn{
+        width:min(90%, 280px);
+        padding:13px 18px;
+        font-size:16px;
+    }
+
+    /* =========================
+       SCENE 5 | دعوت دوباره
+    ========================= */
+
+    #scene5{
+        min-height:100dvh;
+        height:100dvh;
+        flex-direction:column;
+        justify-content:flex-start;
+        align-items:center;
+        gap:18px;
+        padding:18px 14px 28px;
+        overflow-y:auto;
+    }
+
+    #scene5 .photo{
+        flex:0 0 auto;
+        width:92%;
+        height:38dvh;
+        min-height:230px;
+        max-height:380px;
+        border-radius:24px;
+    }
+
+    #scene5 .caption{
+        width:92%;
+        min-height:0;
+        height:auto;
+        padding:24px 18px;
+        border-radius:24px;
+    }
+
+    #scene5 .scene-number{
+        font-size:16px;
+        margin-bottom:12px;
+    }
+
+    #scene5 h2{
+        font-size:23px;
+        line-height:1.5;
+        margin-bottom:12px;
+    }
+
+    #scene5 p{
+        font-size:14px;
+        line-height:1.9;
+        margin-bottom:14px;
+    }
+
+    #scene5 .buttons{
+        width:100%;
+        flex-direction:column;
+        gap:8px;
+    }
+
+    #dateBtn,
+    #noBtn{
+        width:min(88%, 280px);
+        margin:6px auto;
+        padding:13px 16px;
+        font-size:14px;
+    }
+
+    /* =========================
+       SCENE 6 | پایان
+    ========================= */
+
+    #scene6{
+        min-height:100dvh;
+        height:100dvh;
+        justify-content:center;
+        align-items:center;
+        padding:24px 16px;
+        overflow-y:auto;
+        text-align:center;
+        background:
+            radial-gradient(circle at center,
+            rgba(255,120,170,.15),
+            transparent 45%),
+            linear-gradient(135deg,#09070d,#170d16);
+    }
+
+    #scene6 .finalBox{
+        width:92%;
+        max-width:500px;
+        padding:28px 20px;
+        background:rgba(20,18,30,.82);
+        backdrop-filter:blur(14px);
+        border-radius:28px;
+        box-shadow:0 0 35px rgba(255,120,170,.25);
+    }
+
+    #scene6 .scene-number{
+        font-size:17px;
+    }
+
+    #scene6 h1{
+        font-size:29px;
+        line-height:1.5;
+        margin:14px 0;
+    }
+
+    #scene6 h2{
+        font-size:24px;
+        line-height:1.6;
+        margin:18px 0;
+    }
+
+    #scene6 p{
+        font-size:15px;
+        line-height:2;
+    }
+}
+
+/* گوشی‌های خیلی کوچک */
+@media (max-width: 380px){
+
+    #scene1 h1{
+        font-size:30px;
+    }
+
+    #scene1 h2{
+        font-size:18px;
+    }
+
+    #scene1 p{
+        font-size:14px;
+        line-height:1.9;
+    }
+
+    #scene2 h2,
+    #scene3 h2,
+    #scene4 h2,
+    #scene5 h2{
+        font-size:21px;
+    }
+
+    #scene2 p,
+    #scene3 p,
+    #scene4 p,
+    #scene5 p{
+        font-size:14px;
+    }
+
+    #scene2 .photoBox,
+    #scene3 .photo,
+    #scene4 .photo,
+    #scene5 .photo{
+        height:32dvh;
+        min-height:200px;
+    }
 }
 
 
 /* ==========================================
-   SCENE 6
+   SCENE 6 | FINAL SURPRISE
+   تکمیل صفحه پایانی
 ========================================== */
 
 #scene6{
-
     position:relative;
+    width:100%;
+    height:100vh;
+    min-height:100vh;
 
     display:flex;
-
     justify-content:center;
     align-items:center;
 
-    width:100%;
-    height:100vh;
-
-    padding:30px 20px;
-
+    padding:40px 24px;
     overflow:hidden;
 
-    isolation:isolate;
-
     background:
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(255,130,180,.22),
-            transparent 38%
-        ),
-        radial-gradient(
-            circle at 15% 85%,
+        radial-gradient(circle at 50% 20%,
+            rgba(255,120,175,.22),
+            transparent 38%),
+        radial-gradient(circle at 15% 85%,
             rgba(255,80,150,.12),
-            transparent 30%
-        ),
-        linear-gradient(
-            145deg,
-            #08070d,
-            #1a0b16,
-            #09070d
-        );
+            transparent 32%),
+        linear-gradient(145deg,#08070d,#1a0b16,#09070d);
+
+    text-align:center;
 }
 
-
-/* glow */
-
+/* نورهای نرم پس‌زمینه */
 #scene6::before{
-
     content:"";
-
     position:absolute;
 
-    width:450px;
-    height:450px;
+    width:420px;
+    height:420px;
 
     border-radius:50%;
 
-    left:-130px;
-    bottom:-150px;
+    left:-120px;
+    bottom:-140px;
 
-    background:
-        rgba(255,90,155,.16);
+    background:rgba(255,90,155,.16);
+    filter:blur(110px);
 
-    filter:blur(115px);
-
-    animation:
-        finalGlow 9s ease-in-out infinite alternate;
+    animation:finalGlow 9s ease-in-out infinite alternate;
 
     pointer-events:none;
 }
 
-
-/* floating hearts */
-
 #scene6::after{
-
     content:"❤️  ✨  💕  ✨  ❤️";
 
     position:absolute;
-
     inset:0;
 
     display:flex;
-
     justify-content:center;
     align-items:flex-start;
 
-    padding-top:5vh;
+    padding-top:8vh;
 
     font-size:28px;
-
-    letter-spacing:25px;
+    letter-spacing:35px;
 
     color:rgba(255,170,205,.28);
 
-    animation:
-        finalHearts 9s linear infinite;
+    animation:finalHearts 9s linear infinite;
 
     pointer-events:none;
 }
 
-
-/* final box */
-
+/* قاب اصلی */
 #scene6 .finalBox{
-
     position:relative;
-
     z-index:3;
 
     width:min(760px,92%);
-
     max-height:88vh;
 
-    overflow:hidden;
-
-    padding:
-        48px
-        clamp(24px,5vw,58px);
+    padding:50px 55px;
 
     display:flex;
-
     flex-direction:column;
-
     justify-content:center;
     align-items:center;
-
-    text-align:center;
 
     background:
         linear-gradient(
@@ -4347,8 +2516,7 @@ button{
             rgba(255,255,255,.04)
         );
 
-    border:
-        1px solid rgba(255,190,215,.18);
+    border:1px solid rgba(255,190,215,.18);
 
     border-radius:38px;
 
@@ -4360,67 +2528,71 @@ button{
         inset 0 1px 0 rgba(255,255,255,.10);
 
     animation:
-        finalBoxShow 1.7s ease both;
+        finalBoxShow 1.8s ease both,
+        finalBoxFloat 6s ease-in-out 2s infinite;
+
 }
 
-
-/* number */
-
+/* عنوان کوچک */
 #scene6 .scene-number{
 
-    margin-bottom:18px;
+    display:block;
+
+    margin-bottom:20px;
 
     color:#ffb7d0;
 
     font-size:20px;
+    font-weight:500;
 
     text-shadow:
         0 0 15px rgba(255,130,175,.55);
+
 }
 
-
-/* title */
-
+/* عنوان اصلی */
 #scene6 h1{
 
-    margin:0 0 22px;
+    margin:0 0 24px;
 
     font-size:clamp(34px,5vw,58px);
 
     line-height:1.35;
 
+    font-weight:700;
+
     color:#fff;
 
     text-shadow:
-        0 0 20px rgba(255,170,205,.75),
+        0 0 15px rgba(255,170,205,.75),
         0 0 40px rgba(255,70,140,.45);
 
-    animation:
-        finalTitleGlow 3s ease-in-out infinite alternate;
+    animation:finalTitleGlow 3s ease-in-out infinite alternate;
+
 }
 
-
-/* text */
-
+/* متن */
 #scene6 p{
 
     max-width:600px;
 
-    margin:0 0 22px;
+    margin:0 0 26px;
 
-    font-size:clamp(16px,2vw,21px);
+    font-size:clamp(17px,2vw,21px);
 
-    line-height:2.05;
+    line-height:2.1;
 
     color:#f8edf2;
+
+    text-shadow:
+        0 2px 12px rgba(0,0,0,.55);
+
 }
 
-
-/* signature */
-
+/* نام */
 #scene6 h2{
 
-    margin:4px 0 18px;
+    margin:5px 0 18px;
 
     font-size:clamp(28px,4vw,42px);
 
@@ -4430,35 +2602,61 @@ button{
         0 0 18px rgba(255,110,165,.85),
         0 0 45px rgba(255,80,150,.35);
 
-    animation:
-        signaturePulse 2.6s ease-in-out infinite;
+    animation:signaturePulse 2.6s ease-in-out infinite;
+
 }
 
+/* المان های قلب */
+#scene6 .heart{
+    position:absolute;
 
-/* Scene 6 animations */
+    bottom:-50px;
 
+    z-index:2;
+
+    font-size:24px;
+
+    opacity:.75;
+
+    pointer-events:none;
+
+    animation:finalHeartUp 9s linear infinite;
+}
+
+/* ستاره ها */
+#scene6 .spark{
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    box-shadow:
+        0 0 8px #fff,
+        0 0 20px rgba(255,140,190,.95);
+
+    animation:finalSpark 2s ease-in-out infinite alternate;
+
+    pointer-events:none;
+}
+
+/* انیمیشن ها */
 @keyframes finalGlow{
-
     from{
-        transform:
-            translate(0,0)
-            scale(1);
-
+        transform:translate(0,0) scale(1);
         opacity:.65;
     }
 
     to{
-        transform:
-            translate(80px,-40px)
-            scale(1.15);
-
+        transform:translate(80px,-40px) scale(1.15);
         opacity:1;
     }
-
 }
 
 @keyframes finalHearts{
-
     from{
         transform:translateY(105vh);
         opacity:0;
@@ -4472,35 +2670,33 @@ button{
         transform:translateY(-120vh);
         opacity:0;
     }
-
 }
 
 @keyframes finalBoxShow{
-
     from{
         opacity:0;
-
-        transform:
-            translateY(55px)
-            scale(.90);
-
+        transform:translateY(55px) scale(.90);
         filter:blur(10px);
     }
 
     to{
         opacity:1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
+        transform:translateY(0) scale(1);
         filter:blur(0);
     }
+}
 
+@keyframes finalBoxFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-7px);
+    }
 }
 
 @keyframes finalTitleGlow{
-
     from{
         text-shadow:
             0 0 15px rgba(255,170,205,.55),
@@ -4512,11 +2708,9 @@ button{
             0 0 25px rgba(255,190,220,.95),
             0 0 60px rgba(255,70,140,.50);
     }
-
 }
 
 @keyframes signaturePulse{
-
     0%,100%{
         transform:scale(1);
     }
@@ -4524,1161 +2718,145 @@ button{
     50%{
         transform:scale(1.04);
     }
+}
 
+@keyframes finalHeartUp{
+    from{
+        transform:translateY(0) scale(.8) rotate(0deg);
+        opacity:0;
+    }
+
+    20%{
+        opacity:.8;
+    }
+
+    to{
+        transform:translateY(-120vh) scale(1.4) rotate(360deg);
+        opacity:0;
+    }
+}
+
+@keyframes finalSpark{
+    from{
+        opacity:.2;
+        transform:scale(.6);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.7);
+    }
 }
 
 
 /* ==========================================
-   TABLET / SMALL LAPTOP
+   MOBILE | SCENE 6
 ========================================== */
 
-@media (max-width:1100px) and (min-width:901px){
-
-    #scene2,
-    #scene3,
-    #scene4,
-    #scene5{
-
-        padding-left:30px;
-        padding-right:30px;
-
-        gap:25px;
-    }
-
-    #scene2 .photoBox,
-    #scene3 .photo,
-    #scene4 .photoBox{
-
-        width:40vw;
-    }
-
-    #scene2 .caption,
-    #scene3 .caption,
-    #scene4 .caption{
-
-        width:45vw;
-    }
-
-    #scene5 > .photo{
-
-        width:42vw;
-    }
-
-    #scene5 .caption{
-
-        width:44vw;
-    }
-
-}
-
-
-/* ==========================================
-   MOBILE
-========================================== */
-
-@media (max-width:900px){
-
-    html,
-    body{
-
-        width:100% !important;
-        max-width:100% !important;
-
-        overflow-x:hidden !important;
-        overflow-y:hidden !important;
-
-        overscroll-behavior:none !important;
-
-        touch-action:pan-y !important;
-    }
-
-
-    .scene,
-    .scene.active{
-
-        width:100% !important;
-
-        height:100dvh !important;
-
-        min-height:100dvh !important;
-        max-height:100dvh !important;
-
-        overflow-x:hidden !important;
-        overflow-y:hidden !important;
-
-        position:relative !important;
-
-        box-sizing:border-box !important;
-    }
-
-
-    /* ======================================
-       MOBILE SCENE 1
-    ====================================== */
-
-    #scene1{
-
-        padding:
-            18px
-            12px;
-    }
-
-    #scene1 .content{
-
-        width:100%;
-
-        max-width:560px;
-
-        max-height:92dvh;
-
-        overflow:hidden;
-
-        padding:
-            10px
-            8px
-            20px;
-    }
-
-    #scene1 .top-title{
-
-        margin-bottom:14px;
-
-        font-size:17px;
-    }
-
-    #scene1 h1{
-
-        font-size:clamp(32px,9vw,44px);
-
-        line-height:1.3;
-
-        margin-bottom:12px;
-    }
-
-    #scene1 h2{
-
-        font-size:clamp(18px,5.2vw,24px);
-
-        margin-bottom:16px;
-    }
-
-    #scene1 p{
-
-        font-size:clamp(14px,4vw,17px);
-
-        line-height:1.95;
-
-        margin-bottom:24px;
-    }
-
-    #startBtn{
-
-        width:min(92%,360px);
-
-        min-height:52px;
-
-        padding:13px 20px;
-
-        font-size:16px;
-    }
-
-
-    /* ======================================
-       MOBILE SCENE 2
-    ====================================== */
-
-    #scene2{
-
-        flex-direction:column;
-
-        justify-content:flex-start;
-        align-items:center;
-
-        gap:10px;
-
-        padding:
-            10px
-            10px
-            calc(10px + env(safe-area-inset-bottom));
-
-        overflow:hidden !important;
-    }
-
-    #scene2 .photoBox{
-
-        flex:0 0 auto;
-
-        width:min(88vw,430px);
-
-        height:min(34dvh,280px);
-
-        min-height:180px;
-
-        border-radius:22px;
-    }
-
-    #scene2 .caption{
-
-        flex:0 0 auto;
-
-        width:min(94vw,560px);
-
-        max-height:none;
-
-        overflow:hidden;
-
-        padding:
-            18px
-            14px
-            20px;
-
-        border-radius:22px;
-    }
-
-    #scene2 .scene-number{
-
-        font-size:15px;
-
-        margin-bottom:10px;
-    }
-
-    #scene2 h2{
-
-        font-size:clamp(21px,6.5vw,29px);
-
-        line-height:1.4;
-
-        margin-bottom:12px;
-    }
-
-    #scene2 p{
-
-        font-size:13px;
-
-        line-height:1.75;
-    }
-
-    #nextBtn2{
-
-        width:min(92%,300px);
-
-        min-height:44px;
-
-        padding:10px 16px;
-
-        font-size:14px;
-
-        margin-top:14px;
-    }
-
-
-    /* ======================================
-       MOBILE SCENE 3
-    ====================================== */
-
-    #scene3{
-
-        flex-direction:column;
-
-        justify-content:flex-start;
-        align-items:center;
-
-        gap:10px;
-
-        padding:
-            10px
-            10px
-            calc(10px + env(safe-area-inset-bottom));
-
-        overflow:hidden !important;
-    }
-
-    #scene3 .photo{
-
-        flex:0 0 auto;
-
-        width:min(86vw,400px);
-
-        height:min(34dvh,280px);
-
-        min-height:180px;
-
-        border-radius:22px;
-    }
-
-    #scene3 .caption{
-
-        flex:0 0 auto;
-
-        width:min(94vw,560px);
-
-        max-height:none;
-
-        overflow:hidden;
-
-        padding:
-            18px
-            14px
-            20px;
-
-        border-radius:22px;
-    }
-
-    #scene3 .scene-number{
-
-        font-size:15px;
-
-        margin-bottom:8px;
-    }
-
-    #scene3 h2{
-
-        font-size:clamp(21px,6.3vw,29px);
-
-        line-height:1.4;
-
-        margin-bottom:12px;
-    }
-
-    #scene3 p{
-
-        font-size:13px;
-
-        line-height:1.75;
-
-        margin-bottom:16px;
-    }
-
-    #scene3 .nextBtn{
-
-        width:min(92%,280px);
-
-        padding:11px 16px;
-
-        font-size:14px;
-    }
-
-
-    /* ======================================
-       MOBILE SCENE 4
-       عکس + متن داخل یک صفحه
-    ====================================== */
-
-    #scene4{
-
-        width:100% !important;
-
-        height:100dvh !important;
-
-        min-height:100dvh !important;
-
-        max-height:100dvh !important;
-
-        display:flex !important;
-
-        flex-direction:column !important;
-
-        justify-content:flex-start !important;
-        align-items:center !important;
-
-        gap:10px !important;
-
-        padding:
-            10px
-            10px
-            calc(10px + env(safe-area-inset-bottom)) !important;
-
-        overflow:hidden !important;
-
-        box-sizing:border-box !important;
-    }
-
-    #scene4 .photoBox{
-
-        flex:0 0 auto !important;
-
-        width:min(90vw,410px) !important;
-
-        height:31dvh !important;
-
-        min-height:180px !important;
-
-        max-height:250px !important;
-
-        border-radius:22px !important;
-
-        box-sizing:border-box !important;
-    }
-
-    #scene4 .photo{
-
-        width:100% !important;
-        height:100% !important;
-
-        object-fit:cover !important;
-
-        object-position:center !important;
-    }
-
-    #scene4 .caption{
-
-        flex:0 0 auto !important;
-
-        width:min(92vw,420px) !important;
-
-        height:auto !important;
-
-        min-height:0 !important;
-
-        max-height:56dvh !important;
-
-        padding:
-            16px
-            14px
-            18px !important;
-
-        border-radius:24px !important;
-
-        overflow:hidden !important;
-
-        box-sizing:border-box !important;
-
-        text-align:center !important;
-    }
-
-    #scene4 .scene-number{
-
-        font-size:16px !important;
-
-        margin-bottom:8px !important;
-    }
-
-    #scene4 h2{
-
-        font-size:clamp(20px,5.4vw,25px) !important;
-
-        line-height:1.4 !important;
-
-        margin-bottom:10px !important;
-    }
-
-    #scene4 p{
-
-        font-size:clamp(12.5px,3.45vw,15px) !important;
-
-        line-height:1.65 !important;
-
-        margin:
-            0 0 12px !important;
-    }
-
-    #scene4 .nextBtn{
-
-        width:min(88%,280px) !important;
-
-        margin:
-            4px auto 0 !important;
-
-        padding:
-            11px 16px !important;
-
-        font-size:14px !important;
-
-        box-sizing:border-box !important;
-    }
-
-
-    /* ======================================
-       MOBILE SCENE 5
-       بدون اسکرول
-    ====================================== */
-
-    #scene5{
-
-        width:100% !important;
-
-        height:100dvh !important;
-
-        min-height:100dvh !important;
-
-        max-height:100dvh !important;
-
-        display:flex !important;
-
-        flex-direction:column !important;
-
-        justify-content:flex-start !important;
-        align-items:center !important;
-
-        gap:10px !important;
-
-        padding:
-            10px
-            10px
-            calc(10px + env(safe-area-inset-bottom)) !important;
-
-        overflow:hidden !important;
-
-        box-sizing:border-box !important;
-    }
-
-    #scene5 > .photo{
-
-        flex:0 0 auto !important;
-
-        width:min(78vw,320px) !important;
-
-        height:min(30dvh,230px) !important;
-
-        min-height:0 !important;
-
-        max-height:30dvh !important;
-
-        object-fit:cover !important;
-
-        border-radius:20px !important;
-    }
-
-    #scene5 .caption{
-
-        flex:1 1 auto !important;
-
-        width:min(94vw,520px) !important;
-
-        min-height:0 !important;
-
-        height:auto !important;
-
-        max-height:none !important;
-
-        padding:
-            16px
-            14px
-            14px !important;
-
-        border-radius:20px;
-
-        overflow:hidden !important;
-
-        display:flex;
-
-        flex-direction:column;
-
-        justify-content:center;
-
-        align-items:center;
-
-        box-sizing:border-box;
-    }
-
-    #scene5 .scene-number{
-
-        font-size:14px !important;
-
-        margin-bottom:7px !important;
-    }
-
-    #scene5 h2{
-
-        font-size:clamp(19px,5.6vw,26px) !important;
-
-        line-height:1.3 !important;
-
-        margin:
-            0 0 8px !important;
-    }
-
-    #scene5 p{
-
-        font-size:12px !important;
-
-        line-height:1.45 !important;
-
-        margin:
-            0 0 9px !important;
-    }
-
-    #scene5 .buttons{
-
-        width:100%;
-
-        display:flex;
-
-        flex-direction:column !important;
-
-        align-items:center;
-
-        justify-content:center;
-
-        gap:6px !important;
-    }
-
-    #scene5 #dateBtn,
-    #scene5 #noBtn{
-
-        width:min(88%,280px) !important;
-
-        min-height:40px !important;
-
-        height:40px !important;
-
-        margin:0 !important;
-
-        padding:
-            8px
-            12px !important;
-
-        font-size:12px !important;
-    }
-
-
-    /* ======================================
-       MOBILE SCENE 6
-    ====================================== */
+@media(max-width:900px){
 
     #scene6{
-
-        min-height:100dvh !important;
-
-        height:100dvh !important;
-
-        align-items:center;
+        min-height:100dvh;
+        height:100dvh;
 
         padding:
-            18px
-            12px
-            calc(18px + env(safe-area-inset-bottom));
+            22px
+            16px
+            calc(22px + env(safe-area-inset-bottom));
 
-        overflow:hidden !important;
+        overflow:auto;
+        -webkit-overflow-scrolling:touch;
+
+        align-items:center;
     }
 
     #scene6::after{
+        padding-top:4vh;
 
-        padding-top:3vh;
-
-        font-size:21px;
-
-        letter-spacing:10px;
+        font-size:22px;
+        letter-spacing:14px;
     }
 
     #scene6 .finalBox{
+        width:100%;
+        max-width:520px;
+        max-height:none;
+        min-height:0;
 
-        width:min(94vw,560px);
+        padding:34px 20px 30px;
 
-        max-height:calc(
-            100dvh - 36px
-        );
-
-        overflow:hidden;
-
-        padding:
-            30px
-            18px
-            28px;
-
-        border-radius:26px;
+        border-radius:28px;
     }
 
     #scene6 .scene-number{
-
-        font-size:16px;
-
-        margin-bottom:12px;
+        font-size:17px;
+        margin-bottom:16px;
     }
 
     #scene6 h1{
-
-        font-size:clamp(27px,8vw,40px);
+        font-size:clamp(28px,8vw,40px);
 
         line-height:1.45;
 
-        margin-bottom:16px;
+        margin-bottom:18px;
     }
 
     #scene6 p{
-
-        font-size:14px;
+        font-size:16px;
 
         line-height:1.95;
 
-        margin-bottom:16px;
+        margin-bottom:18px;
+
+        max-width:100%;
     }
 
     #scene6 h2{
-
-        font-size:clamp(24px,7vw,34px);
+        font-size:clamp(25px,7vw,34px);
 
         line-height:1.5;
 
-        margin-bottom:12px;
+        margin-top:0;
+        margin-bottom:14px;
     }
 
 }
 
 
 /* ==========================================
-   VERY SMALL PHONES
+   MOBILE کوچک
 ========================================== */
 
-@media (max-width:380px){
-
-    #scene1{
-
-        padding:
-            10px
-            8px;
-    }
-
-    #scene1 h1{
-        font-size:30px;
-    }
-
-    #scene1 h2{
-        font-size:18px;
-    }
-
-    #scene1 p{
-        font-size:13px;
-    }
-
-
-    /* Scene 2 */
-
-    #scene2{
-        gap:8px;
-
-        padding:
-            8px
-            8px
-            calc(8px + env(safe-area-inset-bottom));
-    }
-
-    #scene2 .photoBox{
-
-        width:90vw;
-
-        height:29dvh;
-
-        min-height:160px;
-    }
-
-    #scene2 .caption{
-
-        width:95vw;
-
-        padding:
-            14px
-            11px
-            16px;
-    }
-
-    #scene2 p{
-
-        font-size:12px;
-
-        line-height:1.6;
-    }
-
-
-    /* Scene 3 */
-
-    #scene3{
-
-        gap:8px;
-
-        padding:
-            8px
-            8px
-            calc(8px + env(safe-area-inset-bottom));
-    }
-
-    #scene3 .photo{
-
-        width:90vw;
-
-        height:29dvh;
-
-        min-height:160px;
-    }
-
-    #scene3 .caption{
-
-        width:95vw;
-
-        padding:
-            14px
-            11px
-            16px;
-    }
-
-    #scene3 p{
-
-        font-size:12px;
-
-        line-height:1.6;
-    }
-
-
-    /* Scene 4 */
-
-    #scene4{
-
-        gap:8px !important;
-
-        padding:
-            8px
-            8px !important;
-    }
-
-    #scene4 .photoBox{
-
-        height:29dvh !important;
-
-        min-height:160px !important;
-
-        max-height:220px !important;
-    }
-
-    #scene4 .caption{
-
-        max-height:58dvh !important;
-
-        padding:
-            13px
-            11px
-            15px !important;
-    }
-
-    #scene4 h2{
-
-        font-size:20px !important;
-    }
-
-    #scene4 p{
-
-        font-size:12px !important;
-
-        line-height:1.58 !important;
-    }
-
-
-    /* Scene 5 */
-
-    #scene5{
-
-        gap:7px !important;
-
-        padding:
-            8px
-            8px
-            calc(8px + env(safe-area-inset-bottom)) !important;
-    }
-
-    #scene5 > .photo{
-
-        width:min(74vw,280px) !important;
-
-        height:min(27dvh,200px) !important;
-
-        max-height:27dvh !important;
-    }
-
-    #scene5 .caption{
-
-        padding:
-            13px
-            11px
-            11px !important;
-    }
-
-    #scene5 h2{
-
-        font-size:19px !important;
-    }
-
-    #scene5 p{
-
-        font-size:11px !important;
-
-        line-height:1.38 !important;
-    }
-
-    #scene5 #dateBtn,
-    #scene5 #noBtn{
-
-        width:92% !important;
-
-        min-height:38px !important;
-
-        height:38px !important;
-
-        font-size:11px !important;
-    }
-
-
-    /* Scene 6 */
+@media(max-width:380px){
 
     #scene6{
-
-        padding:
-            10px
-            8px;
+        padding-left:12px;
+        padding-right:12px;
     }
 
     #scene6 .finalBox{
-
-        width:95vw;
-
-        max-height:calc(
-            100dvh - 20px
-        );
-
         padding:
             26px
-            14px
+            16px
             24px;
+        border-radius:24px;
+    }
+
+    #scene6 .scene-number{
+        font-size:15px;
     }
 
     #scene6 h1{
-
         font-size:27px;
     }
 
     #scene6 p{
-
-        font-size:13px;
+        font-size:14px;
+        line-height:1.85;
     }
 
     #scene6 h2{
-
-        font-size:23px;
+        font-size:24px;
     }
 
 }
-
-
-/* ==========================================
-   SHORT MOBILE SCREENS
-========================================== */
-
-@media (max-width:900px) and (max-height:700px){
-
-    #scene1 .content{
-
-        max-height:94dvh;
-    }
-
-
-    #scene2 .photoBox,
-    #scene3 .photo,
-    #scene4 .photoBox,
-    #scene5 > .photo{
-
-        height:27dvh;
-
-        min-height:155px;
-    }
-
-
-    #scene2 .caption,
-    #scene3 .caption,
-    #scene4 .caption,
-    #scene5 .caption{
-
-        padding-top:14px;
-
-        padding-bottom:16px;
-    }
-
-
-    #scene2 p,
-    #scene3 p,
-    #scene4 p,
-    #scene5 p{
-
-        line-height:1.5;
-    }
-
-
-    #scene4 .caption{
-
-        max-height:60dvh !important;
-    }
-
-
-    #scene5 .caption{
-
-        padding:
-            12px
-            11px
-            11px !important;
-    }
-
-}
-
-
-/* ==========================================
-   MOBILE SAFARI
-   FIX HORIZONTAL DRIFT
-========================================== */
-
-html,
-body{
-
-    width:100% !important;
-
-    max-width:100% !important;
-
-    min-width:0 !important;
-
-    overflow-x:hidden !important;
-
-    overflow-y:hidden !important;
-
-    position:relative !important;
-
-    touch-action:pan-y !important;
-
-    overscroll-behavior-x:none !important;
-}
-
-
-.scene,
-.scene.active,
-#scene1,
-#scene2,
-#scene3,
-#scene4,
-#scene5,
-#scene6{
-
-    width:100% !important;
-
-    max-width:100% !important;
-
-    min-width:0 !important;
-
-    left:0 !important;
-
-    right:0 !important;
-
-    overflow-x:hidden !important;
-
-    box-sizing:border-box !important;
-
-    contain:paint;
-}
-
-
-/* decorative elements */
-
-#scene1::before,
-#scene1::after,
-#scene2::before,
-#scene2::after,
-#scene3::before,
-#scene4::before,
-#scene5::before,
-#scene6::before,
-#scene6::after{
-
-    pointer-events:none !important;
-}
-
-
-/* prevent internal width overflow */
-
-#scene1 .content,
-#scene2 .photoBox,
-#scene2 .caption,
-#scene3 .photo,
-#scene3 .caption,
-#scene4 .photoBox,
-#scene4 .caption,
-#scene5 > .photo,
-#scene5 .caption,
-#scene6 .finalBox{
-
-    max-width:100% !important;
-
-    box-sizing:border-box !important;
-}
-
-
-/* ==========================================
-   HORIZONTAL OVERFLOW SAFETY
-========================================== */
-
-#scene1 *,
-#scene2 *,
-#scene3 *,
-#scene4 *,
-#scene5 *,
-#scene6 *{
-
-    max-width:100%;
-}
-
-
-/* ==========================================
-   REMOVE SCROLLBARS
-========================================== */
-
-#scene1 *,
-#scene2 *,
-#scene3 *,
-#scene4 *,
-#scene5 *,
-#scene6 *{
-
-    scrollbar-width:none;
-}
-
-#scene1 *::-webkit-scrollbar,
-#scene2 *::-webkit-scrollbar,
-#scene3 *::-webkit-scrollbar,
-#scene4 *::-webkit-scrollbar,
-#scene5 *::-webkit-scrollbar,
-#scene6 *::-webkit-scrollbar{
-
-    display:none !important;
-}
-
-
-/* ==========================================
-   FINAL MOBILE SAFETY
-========================================== */
-
-@media (max-width:900px){
-
-    body,
-    .scene,
-    .scene.active{
-
-        touch-action:pan-y !important;
-
-        overscroll-behavior:none !important;
-
-        overflow-x:hidden !important;
-
-        overflow-y:hidden !important;
-    }
-
-
-    #scene1,
-    #scene2,
-    #scene3,
-    #scene4,
-    #scene5,
-    #scene6{
-
-        position:relative !important;
-
-        left:0 !important;
-
-        right:0 !important;
-
-        transform:none;
-    }
-}
-```
