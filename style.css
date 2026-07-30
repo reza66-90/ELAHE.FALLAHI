@@ -2271,33 +2271,30 @@ animation:captionDrop5 1.4s ease forwards;
        SCENE 5 | دعوت دوباره
     ========================= */
 
-    #scene5{
-        min-height:100dvh;
-        height:100dvh;
-        flex-direction:column;
-        justify-content:flex-start;
-        align-items:center;
-        gap:18px;
-        padding:18px 14px 28px;
-        overflow-y:auto;
-    }
+  #scene5{
+    flex-direction:row !important;
+    justify-content:space-between !important;
+    align-items:center !important;
 
-    #scene5 .photo{
-        flex:0 0 auto;
-        width:92%;
-        height:38dvh;
-        min-height:230px;
-        max-height:380px;
-        border-radius:24px;
-    }
+    gap:10px;
+    padding:10px;
+}
 
-    #scene5 .caption{
-        width:92%;
-        min-height:0;
-        height:auto;
-        padding:24px 18px;
-        border-radius:24px;
-    }
+
+  #scene5 .photo{
+    width:45% !important;
+    height:75vh !important;
+
+    object-fit:cover;
+    border-radius:20px;
+}
+
+   #scene5 .caption{
+    width:50% !important;
+    height:auto !important;
+
+    padding:15px;
+}
 
     #scene5 .scene-number{
         font-size:16px;
