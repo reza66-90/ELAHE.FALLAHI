@@ -29,33 +29,28 @@ document.addEventListener("DOMContentLoaded", function () {
        پخش خودکار آهنگ
        آهنگ در تمام Sceneها ادامه دارد
     ========================= */
+function playMusic() {
 
-    function playMusic(){
+    if (!bgMusic) return Promise.resolve();
 
-        if(bgMusic){
+    bgMusic.volume = 0.5;
 
-            bgMusic.volume = 0.5;
+    return bgMusic.play()
+        .then(function () {
+            console.log("موزیک پخش شد");
+        })
+        .catch(function (error) {
+            console.log("پخش خودکار توسط مرورگر مسدود شد:", error);
+        });
 
-            bgMusic.play()
-            .then(function(){
-
-                console.log("موزیک پخش شد");
-
-            })
-            .catch(function(error){
-
-                console.log(
-                    "پخش خودکار توسط مرورگر مسدود شد:",
-                    error
-                );
-
-            });
-
-        }
-
-    }
-document.addEventListener("touchstart", playMusic, { once: true });
-document.addEventListener("click", playMusic, { once: true });
+}
+document.body.addEventListener("touchstart", playMusic, {
+    once: true,
+    passive: true
+});
+document.body.addEventListener("click", playMusic, {
+    once: true
+});
 
 // فقط در دسکتاپ تلاش برای پخش خودکار
 if (!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -64,17 +59,24 @@ if (!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
 
     console.log("دکمه آماده است");
 
+if (startBtn) {
 
-    if(startBtn){
+    startBtn.onclick = async function () {
 
-        startBtn.addEventListener("click", function(){
+        console.log("شروع شد");
 
-            console.log("کلیک روی شروع انجام شد");
+        try {
+            await playMusic();
+        } catch (e) {}
 
-        });
+        setTimeout(function () {
+            goToScene(2);
+            startTimer(2);
+        }, 150);
 
-    }
+    };
 
+}
 
     let currentScene = 1;
 
@@ -129,31 +131,7 @@ if (!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
 
 
 
-/* =========================
-   دکمه شروع
-   Scene 1 -> Scene 2
-========================= */
 
-if(startBtn){
-
-    startBtn.onclick = function(){
-
-        console.log("شروع شد");
-
-             playMusic();
-
-        goToScene(2);
-
-
-        console.log("رفتم به Scene 2");
-
-
-        startTimer(2);
-
-
-    };
-
-}
 
 
     /* =========================
