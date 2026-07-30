@@ -2957,3 +2957,27 @@ animation:captionDrop5 1.4s ease forwards;
     }
 
 }
+/* کاهش فاصله عکس و متن در صفحات 2،3،4 */
+@media (max-width:900px){
+
+    #scene2,
+    #scene3,
+    #scene4{
+        gap:0 !important;
+        padding-top:6px !important;
+        padding-bottom:6px !important;
+    }
+
+    #scene2 .photoBox,
+    #scene3 .photo,
+    #scene4 .photo{
+        margin-bottom:0 !important;
+    }
+
+    #scene2 .caption,
+    #scene3 .caption,
+    #scene4 .caption{
+        margin-top:-8px !important;
+    }
+
+}
