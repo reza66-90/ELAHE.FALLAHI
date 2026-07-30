@@ -59,6 +59,17 @@ document.addEventListener("DOMContentLoaded", function () {
     // تلاش برای پخش آهنگ بلافاصله پس از باز شدن صفحه
     playMusic();
 
+// شروع آهنگ با اولین لمس در موبایل Safari
+const scene1 = document.getElementById("scene1");
+
+if (scene1) {
+    scene1.addEventListener("touchstart", function () {
+        playMusic();
+    }, {
+        once: true,
+        passive: true
+    });
+}
 
     console.log("دکمه آماده است");
 

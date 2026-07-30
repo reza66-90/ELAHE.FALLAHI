@@ -1503,3 +1503,366 @@ button{
         line-height:1.55;
     }
 }
+/* ==========================================
+   MOBILE - SCENE 2 PHOTO
+========================================== */
+
+@media (max-width: 800px){
+
+    #scene2{
+        height: 100dvh;
+        min-height: 100dvh;
+
+        flex-direction: column;
+
+        gap: 18px;
+        padding: 18px 14px;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    #scene2 .photoBox{
+        width: 100%;
+        max-width: 420px;
+
+        height: 42dvh;
+        min-height: 250px;
+
+        flex-shrink: 0;
+
+        border-radius: 24px;
+    }
+
+    #scene2 .photo{
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+        object-position: center;
+
+        background: #09070c;
+    }
+
+    #scene2 .caption{
+        width: 100%;
+        max-width: 420px;
+
+        padding: 22px 18px;
+
+        flex-shrink: 0;
+    }
+
+    #scene2 h2{
+        font-size: 24px;
+        line-height: 1.5;
+    }
+
+    #scene2 p{
+        font-size: 15px;
+        line-height: 1.9;
+    }
+
+    #nextBtn2{
+        margin-top: 18px;
+        width: 90%;
+        max-width: 280px;
+    }
+}
+
+
+/* گوشی‌های کوچک */
+@media (max-width: 380px){
+
+    #scene2{
+        padding: 12px 10px;
+        gap: 14px;
+    }
+
+    #scene2 .photoBox{
+        height: 36dvh;
+        min-height: 220px;
+    }
+
+    #scene2 .caption{
+        padding: 18px 14px;
+    }
+
+    #scene2 h2{
+        font-size: 21px;
+    }
+
+    #scene2 p{
+        font-size: 14px;
+        line-height: 1.8;
+    }
+}
+/* ==========================================
+   MOBILE - SCENE 3
+========================================== */
+
+@media (max-width: 900px){
+
+    #scene3{
+        width:100%;
+        height:100dvh;
+        min-height:100dvh;
+
+        display:flex;
+        flex-direction:column;
+
+        justify-content:flex-start;
+        align-items:center;
+
+        gap:16px;
+        padding:14px 12px;
+
+        overflow-y:auto;
+        overflow-x:hidden;
+
+        box-sizing:border-box;
+    }
+
+    /* عکس صفحه 3 */
+    #scene3 .photo{
+
+        width:100%;
+        max-width:420px;
+
+        height:42dvh;
+        min-height:260px;
+
+        flex:0 0 auto;
+
+        object-fit:contain;
+        object-position:center;
+
+        background:#09070c;
+
+        border-radius:24px;
+    }
+
+    /* باکس نوشته */
+    #scene3 .caption{
+
+        width:100%;
+        max-width:420px;
+
+        height:auto;
+        min-height:auto;
+
+        flex:0 0 auto;
+
+        padding:20px 16px;
+
+        box-sizing:border-box;
+
+        border-radius:24px;
+
+        overflow:visible;
+    }
+
+    #scene3 .scene-number{
+        font-size:16px;
+        margin-bottom:12px;
+    }
+
+    #scene3 h2{
+        font-size:22px;
+        line-height:1.5;
+
+        margin-bottom:16px;
+    }
+
+    #scene3 p{
+        font-size:15px;
+        line-height:1.85;
+
+        margin-bottom:20px;
+    }
+
+    #scene3 .nextBtn{
+
+        width:90%;
+        max-width:280px;
+
+        padding:13px 18px;
+
+        font-size:15px;
+
+        margin:0 auto;
+    }
+}
+
+
+/* ==========================================
+   گوشی‌های خیلی کوچک
+========================================== */
+
+@media (max-width:380px){
+
+    #scene3{
+        padding:10px 9px;
+        gap:12px;
+    }
+
+    #scene3 .photo{
+        height:36dvh;
+        min-height:220px;
+    }
+
+    #scene3 .caption{
+        padding:17px 13px;
+    }
+
+    #scene3 h2{
+        font-size:20px;
+        line-height:1.45;
+    }
+
+    #scene3 p{
+        font-size:14px;
+        line-height:1.8;
+    }
+
+    #scene3 .nextBtn{
+        width:95%;
+        font-size:14px;
+        padding:12px 14px;
+    }
+}
+/* ==========================================
+   MOBILE - SCENE 4
+========================================== */
+
+@media (max-width: 900px){
+
+    #scene4{
+        width:100%;
+        height:100dvh;
+        min-height:100dvh;
+
+        display:flex;
+        flex-direction:column;
+
+        justify-content:flex-start;
+        align-items:center;
+
+        gap:16px;
+        padding:14px 12px;
+
+        overflow-y:auto;
+        overflow-x:hidden;
+
+        box-sizing:border-box;
+    }
+
+    /* عکس صفحه 4 */
+    #scene4 .photo{
+
+        width:100%;
+        max-width:420px;
+
+        height:40dvh;
+        min-height:240px;
+
+        flex:0 0 auto;
+
+        object-fit:contain;
+        object-position:center;
+
+        background:#09070c;
+
+        border-radius:24px;
+    }
+
+    /* باکس نوشته */
+    #scene4 .caption{
+
+        width:100%;
+        max-width:420px;
+
+        height:auto;
+        min-height:auto;
+
+        flex:0 0 auto;
+
+        padding:20px 16px;
+
+        box-sizing:border-box;
+
+        border-radius:24px;
+
+        overflow:visible;
+
+        text-align:center;
+    }
+
+    #scene4 .scene-number{
+        font-size:16px;
+        margin-bottom:12px;
+    }
+
+    #scene4 h2{
+        font-size:22px;
+        line-height:1.5;
+
+        margin-bottom:15px;
+    }
+
+    #scene4 p{
+        font-size:15px;
+        line-height:1.85;
+
+        margin-bottom:18px;
+    }
+
+    #scene4 .nextBtn{
+        width:90%;
+        max-width:280px;
+
+        padding:13px 18px;
+
+        font-size:15px;
+
+        margin:0 auto;
+    }
+}
+
+
+/* ==========================================
+   گوشی‌های خیلی کوچک
+========================================== */
+
+@media (max-width:380px){
+
+    #scene4{
+        padding:10px 9px;
+        gap:12px;
+    }
+
+    #scene4 .photo{
+        height:35dvh;
+        min-height:210px;
+    }
+
+    #scene4 .caption{
+        padding:17px 13px;
+    }
+
+    #scene4 h2{
+        font-size:20px;
+        line-height:1.45;
+    }
+
+    #scene4 p{
+        font-size:14px;
+        line-height:1.8;
+    }
+
+    #scene4 .nextBtn{
+        width:95%;
+        font-size:14px;
+        padding:12px 14px;
+    }
+}
