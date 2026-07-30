@@ -2860,8 +2860,16 @@ animation:captionDrop5 1.4s ease forwards;
     }
 
 }
-/* ===== Mobile Fix ===== */
+/* =====================================
+   MOBILE PERFECT FIX
+   فقط موبایل - دسکتاپ بدون تغییر
+===================================== */
+
 @media (max-width:900px){
+
+    body{
+        overflow:hidden;
+    }
 
     .scene{
         height:100dvh !important;
@@ -2872,57 +2880,83 @@ animation:captionDrop5 1.4s ease forwards;
     #scene3,
     #scene4,
     #scene5{
-        display:flex;
-        flex-direction:column;
-        justify-content:space-evenly;
-        align-items:center;
-        padding:10px;
-        gap:10px;
+        flex-direction:column !important;
+        justify-content:space-between !important;
+        align-items:center !important;
+        padding:8px !important;
+        gap:8px !important;
     }
 
     #scene2 .photoBox,
     #scene3 .photo,
     #scene4 .photo,
     #scene5 .photo{
-        width:92% !important;
-        height:34vh !important;
-        min-height:0 !important;
-        max-height:none !important;
+        width:94% !important;
+        height:30vh !important;
+        min-height:170px !important;
+        max-height:240px !important;
+
         object-fit:contain !important;
+        object-position:center !important;
     }
 
     #scene2 .caption,
     #scene3 .caption,
     #scene4 .caption,
     #scene5 .caption{
-        width:92% !important;
+
+        width:94% !important;
         height:auto !important;
         min-height:0 !important;
-        padding:14px !important;
+
+        padding:12px !important;
+    }
+
+    #scene2 .scene-number,
+    #scene3 .scene-number,
+    #scene4 .scene-number,
+    #scene5 .scene-number{
+        font-size:14px !important;
+        margin-bottom:6px !important;
     }
 
     #scene2 h2,
     #scene3 h2,
     #scene4 h2,
     #scene5 h2{
-        font-size:20px !important;
-        margin-bottom:8px;
+        font-size:18px !important;
+        margin-bottom:8px !important;
+        line-height:1.3;
     }
 
     #scene2 p,
     #scene3 p,
     #scene4 p,
     #scene5 p{
-        font-size:13px !important;
-        line-height:1.5 !important;
-        margin-bottom:10px;
+        font-size:12px !important;
+        line-height:1.45 !important;
+        margin-bottom:8px !important;
     }
 
     #scene2 button,
     #scene3 button,
     #scene4 button,
-    #scene5 button{
-        padding:10px 18px;
-        font-size:14px;
+    #scene5 button,
+    #dateBtn,
+    #noBtn{
+
+        width:90% !important;
+
+        padding:10px !important;
+
+        font-size:13px !important;
+
+        margin-top:6px !important;
     }
+
+    #scene5 .buttons{
+        flex-direction:column !important;
+        gap:6px !important;
+    }
+
 }
