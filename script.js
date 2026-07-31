@@ -291,22 +291,20 @@ if(nextBtn2){
     /* =========================
        دکمه نه
     ========================= */
+if(noBtn){
 
+    noBtn.onclick = function(){
 
-    if(noBtn){
+        dateBtn.style.display = "none";
+        noBtn.innerHTML = "ممنون که تا آخر دیدی ❤️";
 
+        setTimeout(() => {
+            goToScene(6);
+        }, 1200);
 
-        noBtn.onclick = function(){
+    };
 
-
-            noBtn.innerHTML =
-            "هر وقت آماده بودی ❤️";
-
-
-        };
-
-
-    }
+}
 
 
 
